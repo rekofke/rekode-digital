@@ -7,7 +7,6 @@ import VisibilityReview from "@/components/VisibilityReview";
 import Footer from "@/components/Footer";
 import Founder from "@/components/Founder";
 
-
 export default function Home() {
   return (
     <main>
@@ -18,7 +17,6 @@ export default function Home() {
       <Founder />
       <Portfolio />
       <VisibilityReview />
-      <Founder />
       <Footer />
     </main>
   );
