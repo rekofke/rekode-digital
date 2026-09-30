@@ -7,7 +7,6 @@ const projects = [
     description:
       "A conversion-focused website concept designed to help a local contractor showcase services, establish trust, and generate quote requests.",
     tag: "Concept Project",
-    gradient: "from-[#C9784A]/30 to-[#071426]",
     href: "/work/summit-ridge",
     image: "/summit-hero.png",
   },
@@ -17,7 +16,6 @@ const projects = [
     description:
       "A local auto repair concept focused on making services easy to understand, building customer confidence, and driving appointment requests.",
     tag: "Concept Project",
-    gradient: "from-slate-500/20 to-[#071426]",
     href: "/work/high-desert-auto",
     image: "/auto-hero.png",
   },
@@ -27,7 +25,8 @@ const projects = [
     description:
       "A visual service-business concept built around project galleries, clear service offerings, and simple estimate requests.",
     tag: "Concept Project",
-    gradient: "from-emerald-900/30 to-[#071426]",
+    href: "/work/silver-state-landscapes",
+    image: "/landscape-hero.png",
   },
 ];
 
@@ -119,7 +118,7 @@ export default function Portfolio() {
                 group transition duration-300 hover:-translate-y-2 hover:border-[#C9784A]/50
               "
             >
-              {/* Project visual */}
+              {/* Project image */}
               <div
                 className="
                   overflow-hidden
@@ -127,87 +126,37 @@ export default function Portfolio() {
                   relative
                 "
               >
-                {project.image ? (
-                  <>
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="
-                        object-cover
-                        transition duration-500 group-hover:scale-105
-                      "
-                    />
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="
+                    object-cover
+                    transition duration-500 group-hover:scale-105
+                  "
+                />
 
-                    <div
-                      className="
-                        bg-gradient-to-t from-[#071426]/90 via-[#071426]/20 to-transparent
-                        absolute inset-0
-                      "
-                    />
+                <div
+                  className="
+                    bg-gradient-to-t from-[#071426]/90 via-[#071426]/20 to-transparent
+                    absolute inset-0
+                  "
+                />
 
-                    <div
-                      className="
-                        absolute bottom-5 left-5
-                      "
-                    >
-                      <p
-                        className="
-                          text-xs font-semibold tracking-[0.25em] text-[#C9784A]
-                          uppercase
-                        "
-                      >
-                        Rekode Concept
-                      </p>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div
-                      className={`
-                        absolute inset-0
-                        bg-gradient-to-br
-                        ${project.gradient}
-                      `}
-                    />
-
-                    <div
-                      className="
-                        bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px]
-                        absolute inset-0
-                      "
-                    />
-
-                    <div
-                      className="
-                        flex
-                        h-full
-                        text-center
-                        relative items-center justify-center
-                      "
-                    >
-                      <div>
-                        <div
-                          className="
-                            text-5xl font-black text-[#C9784A]/80
-                          "
-                        >
-                          R
-                        </div>
-
-                        <p
-                          className="
-                            mt-3
-                            text-xs font-semibold tracking-[0.3em] text-slate-400
-                            uppercase
-                          "
-                        >
-                          Rekode Concept
-                        </p>
-                      </div>
-                    </div>
-                  </>
-                )}
+                <div
+                  className="
+                    absolute bottom-5 left-5
+                  "
+                >
+                  <p
+                    className="
+                      text-xs font-semibold tracking-[0.25em] text-[#C9784A]
+                      uppercase
+                    "
+                  >
+                    Rekode Concept
+                  </p>
+                </div>
               </div>
 
               {/* Project information */}
@@ -260,32 +209,18 @@ export default function Portfolio() {
                   {project.description}
                 </p>
 
-                {project.href ? (
-                  <a
-                    href={project.href}
-                    className="
-                      flex
-                      mt-7
-                      font-semibold text-[#C9784A]
-                      items-center gap-2 transition group-hover:gap-4
-                    "
-                  >
-                    View Project
-                    <span aria-hidden="true">→</span>
-                  </a>
-                ) : (
-                  <span
-                    className="
-                      flex
-                      mt-7
-                      font-semibold text-slate-600
-                      items-center gap-2
-                    "
-                  >
-                    Coming Soon
-                    <span aria-hidden="true">→</span>
-                  </span>
-                )}
+                <a
+                  href={project.href}
+                  className="
+                    flex
+                    mt-7
+                    font-semibold text-[#C9784A]
+                    items-center gap-2 transition group-hover:gap-4
+                  "
+                >
+                  View Project
+                  <span aria-hidden="true">→</span>
+                </a>
               </div>
             </article>
           ))}

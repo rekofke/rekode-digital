@@ -1,53 +1,53 @@
 import Image from "next/image";
 
-export default function HighDesertAutoPage() {
+export default function SummitRidgePage() {
   const services = [
     {
-      title: "Diagnostics",
+      title: "General Construction",
       description:
-        "Accurate troubleshooting for warning lights, performance issues, electrical problems, and hard-to-find drivability concerns.",
+        "Reliable residential construction built around quality workmanship, clear communication, and durable results.",
     },
     {
-      title: "Brake & Suspension",
+      title: "Home Remodels",
       description:
-        "Brake service, shocks, struts, steering components, and suspension repairs to keep your vehicle safe and predictable.",
+        "Kitchen, bathroom, and interior upgrades designed to improve both function and long-term value.",
     },
     {
-      title: "Engine & Cooling",
+      title: "Roofing",
       description:
-        "Repairs for overheating, leaks, belts, hoses, cooling systems, and common engine-related problems.",
+        "Roof repairs, replacements, and exterior improvements with attention to weather protection and lasting performance.",
     },
     {
-      title: "Routine Maintenance",
+      title: "Outdoor Projects",
       description:
-        "Oil changes, filters, fluids, inspections, and scheduled maintenance to help prevent bigger repairs later.",
+        "Decks, fences, patios, and exterior upgrades that make outdoor spaces more useful and inviting.",
     },
   ];
 
   const projects = [
     {
-      title: "Brake System Overhaul",
-      image: "/auto-brakes.png",
+      title: "Mountain Home Remodel",
+      image: "/summit-home.png",
     },
     {
-      title: "Engine Diagnostic",
-      image: "/auto-diagnostic.png",
+      title: "Residential Roof Replacement",
+      image: "/summit-roof.png",
     },
     {
-      title: "Suspension Repair",
-      image: "/auto-suspension.png",
+      title: "Custom Backyard Deck",
+      image: "/summit-deck.png",
     },
     {
-      title: "Preventive Maintenance",
-      image: "/auto-maintenance.png",
+      title: "Exterior Renovation",
+      image: "/summit-exterior.png",
     },
   ];
 
   return (
     <main
       className="
-        text-[#1c2328]
-        bg-[#f3f4f6]
+        text-[#1f2526]
+        bg-[#f4efe7]
       "
     >
       {/* Hero */}
@@ -56,13 +56,12 @@ export default function HighDesertAutoPage() {
           overflow-hidden
           min-h-[760px]
           text-white
-          bg-[#111820]
           relative
         "
       >
         <Image
-          src="/auto-hero.png"
-          alt="Professional auto repair shop"
+          src="/summit-hero.png"
+          alt="Luxury mountain home construction project"
           fill
           priority
           className="
@@ -72,7 +71,7 @@ export default function HighDesertAutoPage() {
 
         <div
           className="
-            bg-gradient-to-r from-[#0d1319]/95 via-[#0d1319]/80 to-[#0d1319]/35
+            bg-gradient-to-r from-[#11191b]/95 via-[#11191b]/75 to-[#11191b]/30
             absolute inset-0
           "
         />
@@ -94,11 +93,11 @@ export default function HighDesertAutoPage() {
             <p
               className="
                 mb-5
-                text-sm font-semibold tracking-[0.3em] text-[#e09a45]
+                text-sm font-semibold tracking-[0.3em] text-[#c3905d]
                 uppercase
               "
             >
-              High Desert Auto Repair
+              Serving Northern Nevada
             </p>
 
             <h1
@@ -108,13 +107,13 @@ export default function HighDesertAutoPage() {
                 lg:text-7xl
               "
             >
-              Straight Answers.
+              Built Right.
               <span
                 className="
                   block
-                  text-[#e09a45]
+                  text-[#c3905d]
                 "
-              >Reliable Repairs.</span>
+              >Built to Last.</span>
             </h1>
 
             <p
@@ -124,9 +123,9 @@ export default function HighDesertAutoPage() {
                 text-lg leading-8 text-slate-200
               "
             >
-              Honest automotive service built around clear explanations,
-              dependable workmanship, and helping drivers get back on the road
-              with confidence.
+              Summit Ridge Construction delivers dependable residential
+              construction, remodeling, roofing, and outdoor projects with a
+              straightforward approach and pride in the finished work.
             </p>
 
             <div
@@ -138,21 +137,21 @@ export default function HighDesertAutoPage() {
               "
             >
               <a
-                href="#appointment"
+                href="#estimate"
                 className="
                   inline-flex
                   px-7 py-4
                   font-semibold text-white
-                  bg-[#d88932]
+                  bg-[#b88552]
                   rounded-md
-                  items-center justify-center transition hover:bg-[#e49a45]
+                  items-center justify-center transition hover:bg-[#c79766]
                 "
               >
-                Request an Appointment
+                Get a Free Estimate
               </a>
 
               <a
-                href="#services"
+                href="#projects"
                 className="
                   inline-flex
                   px-7 py-4
@@ -162,7 +161,7 @@ export default function HighDesertAutoPage() {
                   items-center justify-center backdrop-blur-sm transition hover:bg-white/10
                 "
               >
-                View Services
+                View Our Work
               </a>
             </div>
           </div>
@@ -171,7 +170,6 @@ export default function HighDesertAutoPage() {
 
       {/* Services */}
       <section
-        id="services"
         className="
           px-6 py-24
           lg:px-8
@@ -190,11 +188,11 @@ export default function HighDesertAutoPage() {
           >
             <p
               className="
-                text-sm font-semibold tracking-[0.25em] text-[#c87425]
+                text-sm font-semibold tracking-[0.25em] text-[#a66f3f]
                 uppercase
               "
             >
-              Auto Services
+              What We Do
             </p>
 
             <h2
@@ -204,17 +202,18 @@ export default function HighDesertAutoPage() {
                 sm:text-5xl
               "
             >
-              Repair work that makes sense.
+              Practical construction services for real homes.
             </h2>
 
             <p
               className="
                 mt-6
-                text-lg leading-8 text-[#5f676c]
+                text-lg leading-8 text-[#5e6566]
               "
             >
-              High Desert Auto Repair is designed around one simple idea:
-              customers should understand what their vehicle needs and why.
+              From smaller upgrades to major improvements, Summit Ridge focuses
+              on dependable craftsmanship and a finished result you can feel
+              good about.
             </p>
           </div>
 
@@ -232,8 +231,8 @@ export default function HighDesertAutoPage() {
                 key={service.title}
                 className="
                   p-7
-                  bg-white
-                  rounded-2xl border border-slate-200
+                  bg-[#fffaf3]
+                  rounded-2xl border border-[#d8cfc2]
                   shadow-sm
                 "
               >
@@ -241,8 +240,8 @@ export default function HighDesertAutoPage() {
                   className="
                     flex
                     h-11 w-11
-                    text-sm font-bold text-[#e09a45]
-                    bg-[#182129]
+                    text-sm font-bold text-[#c3905d]
+                    bg-[#20282a]
                     rounded-full
                     items-center justify-center
                   "
@@ -260,7 +259,7 @@ export default function HighDesertAutoPage() {
                 <p
                   className="
                     mt-3
-                    leading-7 text-[#687177]
+                    leading-7 text-[#666d6e]
                   "
                 >
                   {service.description}
@@ -276,7 +275,7 @@ export default function HighDesertAutoPage() {
         className="
           px-6 py-24
           text-white
-          bg-[#172028]
+          bg-[#20282a]
           lg:px-8
         "
       >
@@ -292,11 +291,11 @@ export default function HighDesertAutoPage() {
           <div>
             <p
               className="
-                text-sm font-semibold tracking-[0.25em] text-[#e09a45]
+                text-sm font-semibold tracking-[0.25em] text-[#c3905d]
                 uppercase
               "
             >
-              Why Drivers Choose Us
+              Why Summit Ridge
             </p>
 
             <h2
@@ -306,7 +305,7 @@ export default function HighDesertAutoPage() {
                 sm:text-5xl
               "
             >
-              No mystery. No unnecessary runaround.
+              Straightforward service from first conversation to final cleanup.
             </h2>
 
             <p
@@ -316,9 +315,9 @@ export default function HighDesertAutoPage() {
                 text-lg leading-8 text-slate-300
               "
             >
-              Car repairs are stressful enough. The goal is to make the process
-              clearer with straightforward recommendations and service you can
-              understand.
+              Good construction should not feel confusing. We believe homeowners
+              deserve clear expectations, dependable communication, and work
+              that is treated with care.
             </p>
           </div>
 
@@ -330,10 +329,10 @@ export default function HighDesertAutoPage() {
             "
           >
             {[
-              "Clear Explanations",
-              "Upfront Estimates",
-              "Quality Parts",
-              "Practical Recommendations",
+              "Clear Estimates",
+              "Dependable Scheduling",
+              "Respect for Your Property",
+              "Quality-Focused Work",
             ].map((item) => (
               <div
                 key={item}
@@ -345,7 +344,7 @@ export default function HighDesertAutoPage() {
               >
                 <div
                   className="
-                    text-2xl text-[#e09a45]
+                    text-2xl text-[#c3905d]
                   "
                 >✓</div>
                 <p
@@ -360,8 +359,9 @@ export default function HighDesertAutoPage() {
         </div>
       </section>
 
-      {/* Projects / Shop work */}
+      {/* Projects */}
       <section
+        id="projects"
         className="
           px-6 py-24
           lg:px-8
@@ -387,11 +387,11 @@ export default function HighDesertAutoPage() {
             >
               <p
                 className="
-                  text-sm font-semibold tracking-[0.25em] text-[#c87425]
+                  text-sm font-semibold tracking-[0.25em] text-[#a66f3f]
                   uppercase
                 "
               >
-                In The Shop
+                Recent Work
               </p>
 
               <h2
@@ -401,18 +401,18 @@ export default function HighDesertAutoPage() {
                   sm:text-5xl
                 "
               >
-                The kind of work customers depend on.
+                Built for everyday life.
               </h2>
             </div>
 
             <p
               className="
                 max-w-xl
-                leading-7 text-[#697176]
+                leading-7 text-[#666d6e]
               "
             >
-              Example service categories and shop work presented as part of this
-              Rekode Digital concept project.
+              A sample of the type of residential work Summit Ridge Construction
+              is designed to showcase.
             </p>
           </div>
 
@@ -430,7 +430,6 @@ export default function HighDesertAutoPage() {
                 className="
                   overflow-hidden
                   min-h-[360px]
-                  bg-[#1a2228]
                   rounded-2xl
                   group relative
                 "
@@ -447,7 +446,7 @@ export default function HighDesertAutoPage() {
 
                 <div
                   className="
-                    bg-gradient-to-t from-black/85 via-black/15 to-transparent
+                    bg-gradient-to-t from-black/80 via-black/15 to-transparent
                     absolute inset-0
                   "
                 />
@@ -461,11 +460,11 @@ export default function HighDesertAutoPage() {
                 >
                   <p
                     className="
-                      text-sm tracking-[0.2em] text-[#f0a85c]
+                      text-sm tracking-[0.2em] text-[#d5a16e]
                       uppercase
                     "
                   >
-                    Service
+                    Project
                   </p>
                   <h3
                     className="
@@ -481,7 +480,7 @@ export default function HighDesertAutoPage() {
           <p
             className="
               mt-6
-              text-sm leading-6 text-[#7a8287]
+              text-sm leading-6 text-[#777e7f]
             "
           >
             Demo portfolio content created for presentation purposes.
@@ -493,7 +492,7 @@ export default function HighDesertAutoPage() {
       <section
         className="
           px-6 py-24
-          bg-[#e8ebed]
+          bg-[#e9dfd1]
           lg:px-8
         "
       >
@@ -509,11 +508,11 @@ export default function HighDesertAutoPage() {
           <div>
             <p
               className="
-                text-sm font-semibold tracking-[0.25em] text-[#c87425]
+                text-sm font-semibold tracking-[0.25em] text-[#a66f3f]
                 uppercase
               "
             >
-              Local Auto Care
+              About Us
             </p>
 
             <h2
@@ -523,42 +522,42 @@ export default function HighDesertAutoPage() {
                 sm:text-5xl
               "
             >
-              Built around trust.
+              Local work. Local reputation.
             </h2>
           </div>
 
           <div>
             <p
               className="
-                text-lg leading-8 text-[#5e666b]
+                text-lg leading-8 text-[#5d6464]
               "
             >
-              High Desert Auto Repair is presented as a locally focused shop
-              where customers can expect practical recommendations, clear
-              communication, and dependable service.
+              Summit Ridge Construction is presented as a locally focused
+              Northern Nevada contractor built around dependable service,
+              practical solutions, and pride in craftsmanship.
             </p>
 
             <p
               className="
                 mt-5
-                leading-7 text-[#697176]
+                leading-7 text-[#686f70]
               "
             >
-              The site concept is intentionally simple: help people understand
-              the services, build trust quickly, and make it easy to request an
-              appointment.
+              Whether the project is a remodel, a roof, or a backyard upgrade,
+              the goal is simple: make the process easier and deliver something
+              the homeowner is proud to live with.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Appointment */}
+      {/* Estimate */}
       <section
-        id="appointment"
+        id="estimate"
         className="
           px-6 py-24
           text-white
-          bg-[#111820]
+          bg-[#161d1f]
           lg:px-8
         "
       >
@@ -574,11 +573,11 @@ export default function HighDesertAutoPage() {
           <div>
             <p
               className="
-                text-sm font-semibold tracking-[0.25em] text-[#e09a45]
+                text-sm font-semibold tracking-[0.25em] text-[#c3905d]
                 uppercase
               "
             >
-              Schedule Service
+              Start a Project
             </p>
 
             <h2
@@ -588,7 +587,7 @@ export default function HighDesertAutoPage() {
                 sm:text-5xl
               "
             >
-              Tell us what your vehicle is doing.
+              Tell us what you&apos;re planning.
             </h2>
 
             <p
@@ -598,8 +597,8 @@ export default function HighDesertAutoPage() {
                 text-lg leading-8 text-slate-300
               "
             >
-              Share the symptoms, warning lights, or service you need and we&apos;ll
-              follow up to discuss the next step.
+              Share a few details and we&apos;ll follow up to talk through the
+              project, timeline, and next steps.
             </p>
           </div>
 
@@ -618,9 +617,9 @@ export default function HighDesertAutoPage() {
               className="
                 px-4 py-3.5
                 text-white
-                bg-[#1b252d]
+                bg-[#20282a]
                 rounded-md border border-white/10
-                outline-none placeholder:text-slate-500 focus:border-[#e09a45]
+                outline-none placeholder:text-slate-500 focus:border-[#c3905d]
               "
             />
 
@@ -630,9 +629,9 @@ export default function HighDesertAutoPage() {
               className="
                 px-4 py-3.5
                 text-white
-                bg-[#1b252d]
+                bg-[#20282a]
                 rounded-md border border-white/10
-                outline-none placeholder:text-slate-500 focus:border-[#e09a45]
+                outline-none placeholder:text-slate-500 focus:border-[#c3905d]
               "
             />
 
@@ -642,34 +641,22 @@ export default function HighDesertAutoPage() {
               className="
                 px-4 py-3.5
                 text-white
-                bg-[#1b252d]
+                bg-[#20282a]
                 rounded-md border border-white/10
-                outline-none placeholder:text-slate-500 focus:border-[#e09a45]
-              "
-            />
-
-            <input
-              type="text"
-              placeholder="Vehicle Year / Make / Model"
-              className="
-                px-4 py-3.5
-                text-white
-                bg-[#1b252d]
-                rounded-md border border-white/10
-                outline-none placeholder:text-slate-500 focus:border-[#e09a45]
+                outline-none placeholder:text-slate-500 focus:border-[#c3905d]
               "
             />
 
             <textarea
               rows={5}
-              placeholder="Describe the problem or service you need..."
+              placeholder="Tell us about your project..."
               className="
                 px-4 py-3.5
                 text-white
-                bg-[#1b252d]
+                bg-[#20282a]
                 rounded-md border border-white/10
                 resize-none
-                outline-none placeholder:text-slate-500 focus:border-[#e09a45]
+                outline-none placeholder:text-slate-500 focus:border-[#c3905d]
               "
             />
 
@@ -678,12 +665,12 @@ export default function HighDesertAutoPage() {
               className="
                 px-6 py-4
                 font-semibold text-white
-                bg-[#d88932]
+                bg-[#b88552]
                 rounded-md
-                transition hover:bg-[#e49a45]
+                transition hover:bg-[#c79766]
               "
             >
-              Request an Appointment
+              Request a Free Estimate
             </button>
 
             <p
@@ -691,7 +678,7 @@ export default function HighDesertAutoPage() {
                 text-xs leading-5 text-slate-500
               "
             >
-              Demo appointment form for portfolio presentation.
+              Demo contact form for portfolio presentation.
             </p>
           </form>
         </div>
@@ -702,7 +689,7 @@ export default function HighDesertAutoPage() {
         className="
           px-6 py-10
           text-white
-          bg-[#0a0f13]
+          bg-[#0f1516]
           lg:px-8
         "
       >
@@ -721,14 +708,14 @@ export default function HighDesertAutoPage() {
               className="
                 font-bold
               "
-            >High Desert Auto Repair</p>
+            >Summit Ridge Construction</p>
             <p
               className="
                 mt-1
                 text-sm text-slate-500
               "
             >
-              Straight Answers. Reliable Repairs.
+              Built Right. Built to Last.
             </p>
           </div>
 
