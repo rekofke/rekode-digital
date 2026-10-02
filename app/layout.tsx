@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -13,8 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Rekode Digital | Websites & Digital Solutions",
+    title: "Rekode Digital | Websites & Digital Solutions",
     template: "%s | Rekode Digital",
   },
 
@@ -51,22 +51,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html
-      lang="en"
-      className={`
-        h-full
-        antialiased
-        ${geistSans.variable} ${geistMono.variable}
-      `}
-    >
-      <body
-        className="
-          flex flex-col
-          min-h-full
-        "
-      >{children}</body>
+    <html lang="en">
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
