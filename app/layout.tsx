@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Rekode Digital | Websites & Digital Solutions",
+  title: {
+    default: "Rekode Digital | Websites & Digital Solutions",
     template: "%s | Rekode Digital",
   },
 
@@ -58,7 +59,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body
+        className={`
+          ${geistSans.variable} ${geistMono.variable}
+        `}
+      >
         {children}
         <Analytics />
       </body>

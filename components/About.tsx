@@ -204,7 +204,7 @@ export default function About() {
                 leading-7 text-slate-400
               "
             >
-              The goal isn't simply to deliver a website. It's to build
+              The goal isn&apos;t simply to deliver a website. It&apos;s to build
               something that helps your business move forward.
             </p>
           </div>

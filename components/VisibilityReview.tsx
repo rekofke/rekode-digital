@@ -121,7 +121,7 @@ export default function VisibilityReview() {
               text-lg leading-8 text-slate-300
             "
           >
-            Tell us a little about your business and we'll take a look at your
+            Tell us a little about your business and we&apos;ll take a look at your
             online presence and identify practical opportunities to improve it.
           </p>
         </div>
@@ -149,7 +149,7 @@ export default function VisibilityReview() {
                 uppercase
               "
             >
-              What We'll Review
+              What We&apos;ll Review
             </p>
 
             <div
@@ -474,8 +474,8 @@ export default function VisibilityReview() {
                       rounded-md border border-red-400/30
                     "
                   >
-                    We couldn't send your request. Please try again or email us
-                    directly at getrekode@gmail.com.
+                    We couldn&apos;t send your request. Please try again or email
+                    us directly at getrekode@gmail.com.
                   </div>
                 )}
 
