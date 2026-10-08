@@ -6,6 +6,7 @@ import Portfolio from "@/components/Portfolio";
 import VisibilityReview from "@/components/VisibilityReview";
 import Footer from "@/components/Footer";
 import Founder from "@/components/Founder";
+import CustomerPerspective from "@/components/CustomerPerspective";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Services />
+      <CustomerPerspective />
       <About />
       <Founder />
       <Portfolio />
