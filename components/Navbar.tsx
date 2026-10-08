@@ -32,10 +32,9 @@ export default function Navbar() {
             items-center justify-between
           "
         >
-
           {/* Logo */}
           <a
-            href="#"
+            href="/"
             onClick={closeMenu}
             className="
               flex
@@ -64,7 +63,7 @@ export default function Navbar() {
             "
           >
             <a
-              href="#services"
+              href="/#services"
               className="
                 text-sm font-medium text-slate-300
                 transition hover:text-[#C9784A]
@@ -74,7 +73,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#work"
+              href="/#work"
               className="
                 text-sm font-medium text-slate-300
                 transition hover:text-[#C9784A]
@@ -84,7 +83,17 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#about"
+              href="/how-it-works"
+              className="
+                text-sm font-medium text-slate-300
+                transition hover:text-[#C9784A]
+              "
+            >
+              How It Works
+            </a>
+
+            <a
+              href="/#about"
               className="
                 text-sm font-medium text-slate-300
                 transition hover:text-[#C9784A]
@@ -94,7 +103,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#contact"
+              href="/#contact"
               className="
                 text-sm font-medium text-slate-300
                 transition hover:text-[#C9784A]
@@ -104,7 +113,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#visibility-review"
+              href="/#visibility-review"
               className="
                 px-5 py-2.5
                 text-sm font-semibold text-white
@@ -167,7 +176,6 @@ export default function Navbar() {
               />
             </div>
           </button>
-
         </div>
 
         {/* Mobile Navigation */}
@@ -184,9 +192,8 @@ export default function Navbar() {
                 flex flex-col
               "
             >
-
               <a
-                href="#services"
+                href="/#services"
                 onClick={closeMenu}
                 className="
                   py-4
@@ -199,7 +206,7 @@ export default function Navbar() {
               </a>
 
               <a
-                href="#work"
+                href="/#work"
                 onClick={closeMenu}
                 className="
                   py-4
@@ -212,7 +219,20 @@ export default function Navbar() {
               </a>
 
               <a
-                href="#about"
+                href="/how-it-works"
+                onClick={closeMenu}
+                className="
+                  py-4
+                  text-slate-300
+                  border-b border-white/5
+                  transition hover:text-[#C9784A]
+                "
+              >
+                How It Works
+              </a>
+
+              <a
+                href="/#about"
                 onClick={closeMenu}
                 className="
                   py-4
@@ -225,7 +245,7 @@ export default function Navbar() {
               </a>
 
               <a
-                href="#contact"
+                href="/#contact"
                 onClick={closeMenu}
                 className="
                   py-4
@@ -238,7 +258,7 @@ export default function Navbar() {
               </a>
 
               <a
-                href="#visibility-review"
+                href="/#visibility-review"
                 onClick={closeMenu}
                 className="
                   mt-5 px-5 py-3.5
@@ -250,11 +270,9 @@ export default function Navbar() {
               >
                 Free Visibility Review
               </a>
-
             </div>
           </div>
         )}
-
       </nav>
     </header>
   );
