@@ -7,6 +7,7 @@ import VisibilityReview from "@/components/VisibilityReview";
 import Footer from "@/components/Footer";
 import Founder from "@/components/Founder";
 import CustomerPerspective from "@/components/CustomerPerspective";
+import RekodeReport from "@/components/RekodeReport";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Founder />
       <Portfolio />
       <VisibilityReview />
+      <RekodeReport />
       <Footer />
     </main>
   );
