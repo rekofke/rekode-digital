@@ -458,7 +458,7 @@ export default function VisibilityReview() {
                       rounded-md border border-emerald-400/30
                     "
                   >
-                    ✓ Thanks! Your request has been received. We'll be in touch
+                    ✓ Thanks! Your request has been received. We&apos;ll be in touch
                     soon.
                   </div>
                 )}

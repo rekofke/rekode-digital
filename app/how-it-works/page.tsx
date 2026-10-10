@@ -303,9 +303,9 @@ export default function HowItWorksPage() {
                 leading-8 text-slate-400
               "
             >
-              That's why we focus on practical solutions, clear communication,
+              That&apos;s why we focus on practical solutions, clear communication,
               and long-term relationships instead of selling technology for
-              technology's sake.
+              technology&apos;s sake.
             </p>
           </div>
 
@@ -382,7 +382,7 @@ export default function HowItWorksPage() {
               sm:text-4xl
             "
           >
-            Let's see where your opportunities are.
+            Lets see where your opportunities are.
           </h2>
 
           <p
@@ -392,7 +392,7 @@ export default function HowItWorksPage() {
               leading-8 text-slate-400
             "
           >
-            Start with a complimentary Business Visibility Review. We'll take
+            Start with a complimentary Business Visibility Review. We will take
             a look at how your business appears online and help identify where
             you may have opportunities to improve.
           </p>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -33,7 +34,7 @@ export default function Navbar() {
           "
         >
           {/* Logo */}
-          <a
+          <Link
             href="/"
             onClick={closeMenu}
             className="
@@ -52,7 +53,7 @@ export default function Navbar() {
                 h-[58px] w-auto
               "
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div
@@ -62,7 +63,7 @@ export default function Navbar() {
               md:flex
             "
           >
-            <a
+            <Link
               href="/#services"
               className="
                 text-sm font-medium text-slate-300
@@ -70,9 +71,9 @@ export default function Navbar() {
               "
             >
               Services
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/#work"
               className="
                 text-sm font-medium text-slate-300
@@ -80,9 +81,9 @@ export default function Navbar() {
               "
             >
               Our Work
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/how-it-works"
               className="
                 text-sm font-medium text-slate-300
@@ -90,9 +91,9 @@ export default function Navbar() {
               "
             >
               How It Works
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/#about"
               className="
                 text-sm font-medium text-slate-300
@@ -100,9 +101,9 @@ export default function Navbar() {
               "
             >
               About
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/#contact"
               className="
                 text-sm font-medium text-slate-300
@@ -110,9 +111,9 @@ export default function Navbar() {
               "
             >
               Contact
-            </a>
+            </Link>
 
-            <a
+            <Link
               href="/#visibility-review"
               className="
                 px-5 py-2.5
@@ -123,7 +124,7 @@ export default function Navbar() {
               "
             >
               Free Visibility Review
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -192,7 +193,7 @@ export default function Navbar() {
                 flex flex-col
               "
             >
-              <a
+              <Link
                 href="/#services"
                 onClick={closeMenu}
                 className="
@@ -203,9 +204,9 @@ export default function Navbar() {
                 "
               >
                 Services
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/#work"
                 onClick={closeMenu}
                 className="
@@ -216,9 +217,9 @@ export default function Navbar() {
                 "
               >
                 Our Work
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/how-it-works"
                 onClick={closeMenu}
                 className="
@@ -229,9 +230,9 @@ export default function Navbar() {
                 "
               >
                 How It Works
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/#about"
                 onClick={closeMenu}
                 className="
@@ -242,9 +243,9 @@ export default function Navbar() {
                 "
               >
                 About
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/#contact"
                 onClick={closeMenu}
                 className="
@@ -255,9 +256,9 @@ export default function Navbar() {
                 "
               >
                 Contact
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/#visibility-review"
                 onClick={closeMenu}
                 className="
@@ -269,7 +270,7 @@ export default function Navbar() {
                 "
               >
                 Free Visibility Review
-              </a>
+              </Link>
             </div>
           </div>
         )}
