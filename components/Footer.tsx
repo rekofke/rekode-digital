@@ -154,7 +154,9 @@ export default function Footer() {
                 className="
                   text-sm text-slate-500
                 "
-              >Email</p>
+              >
+                Email
+              </p>
 
               <a
                 href="mailto:getrekode@gmail.com"
@@ -178,7 +180,9 @@ export default function Footer() {
                 className="
                   text-sm text-slate-500
                 "
-              >Phone</p>
+              >
+                Phone
+              </p>
 
               <a
                 href="tel:+17753755765"
@@ -204,6 +208,15 @@ export default function Footer() {
               "
             >
               Get Rekode
+            </a>
+            <a
+              href="/privacy-policy"
+              className="
+                text-slate-400
+                transition hover:text-[#C9784A]
+              "
+            >
+              Privacy Policy
             </a>
           </div>
         </div>
