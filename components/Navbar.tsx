@@ -64,7 +64,7 @@ export default function Navbar() {
             "
           >
             <Link
-              href="/#services"
+              href="/services"
               className="
                 text-sm font-medium text-slate-300
                 transition hover:text-[#C9784A]
@@ -194,7 +194,7 @@ export default function Navbar() {
               "
             >
               <Link
-                href="/#services"
+                href="/services"
                 onClick={closeMenu}
                 className="
                   py-4
