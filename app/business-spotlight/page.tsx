@@ -61,7 +61,7 @@ export default function BusinessSpotlightPage() {
           >
             You Built the Business.
             <br />
-            We'll Tell Your Story.
+            We&apos;ll Tell Your Story.
           </p>
 
           <p
