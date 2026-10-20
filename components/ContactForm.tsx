@@ -1,17 +1,42 @@
 
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import {
+  useState,
+  useRef,
+  type FormEvent,
+} from "react";
+
+import {
+  Send,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [status, setStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
 
+  const notificationRef = useRef<HTMLDivElement>(null);
+
   const fieldStyle =
     "w-full rounded-md border border-white/15 bg-[#071426] px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-[#C9784A]";
+
+  function showNotification() {
+    requestAnimationFrame(() => {
+      notificationRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+
+      notificationRef.current?.focus({
+        preventScroll: true,
+      });
+    });
+  }
 
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>
@@ -49,11 +74,13 @@ export default function ContactForm() {
         throw new Error("Unable to send message.");
       }
 
-      setStatus("success");
       form.reset();
+      setStatus("success");
+      showNotification();
     } catch (error) {
       console.error("Contact form error:", error);
       setStatus("error");
+      showNotification();
     } finally {
       setIsSubmitting(false);
     }
@@ -66,6 +93,94 @@ export default function ContactForm() {
         mt-8 space-y-6
       "
     >
+      {/* SUCCESS CONFIRMATION */}
+      {status === "success" && (
+        <div
+          ref={notificationRef}
+          tabIndex={-1}
+          role="status"
+          aria-live="polite"
+          className="
+            p-6
+            text-center
+            bg-green-500/15
+            rounded-xl border-2 border-green-500/50
+            scroll-mt-28 outline-none
+          "
+        >
+          <CheckCircle
+            size={42}
+            className="
+              mx-auto
+              text-green-400
+            "
+          />
+
+          <h3
+            className="
+              mt-4
+              text-2xl font-bold text-green-300
+            "
+          >
+            Message Sent Successfully!
+          </h3>
+
+          <p
+            className="
+              mt-3
+              leading-7 text-slate-200
+            "
+          >
+            Thank you for contacting Rekode Digital.
+            Your message has been sent, and we look
+            forward to speaking with you!
+          </p>
+        </div>
+      )}
+
+      {/* ERROR NOTIFICATION */}
+      {status === "error" && (
+        <div
+          ref={notificationRef}
+          tabIndex={-1}
+          role="alert"
+          className="
+            p-6
+            text-center
+            bg-red-500/10
+            rounded-xl border border-red-500/40
+            scroll-mt-28 outline-none
+          "
+        >
+          <AlertCircle
+            size={36}
+            className="
+              mx-auto
+              text-red-400
+            "
+          />
+
+          <h3
+            className="
+              mt-3
+              text-xl font-bold text-red-300
+            "
+          >
+            Message Could Not Be Sent
+          </h3>
+
+          <p
+            className="
+              mt-3
+              leading-7 text-slate-200
+            "
+          >
+            Please try again or contact us directly
+            at getrekode@gmail.com.
+          </p>
+        </div>
+      )}
+
       {/* NAME AND BUSINESS */}
       <div
         className="
@@ -220,21 +335,27 @@ export default function ContactForm() {
           className={fieldStyle}
         >
           <option value="">Select a service</option>
+
           <option value="Website Design or Redesign">
             Website Design or Redesign
           </option>
+
           <option value="Google Business Profile / Local SEO">
             Google Business Profile / Local SEO
           </option>
+
           <option value="Branding">
             Branding
           </option>
+
           <option value="Social Media / Digital Marketing">
             Social Media / Digital Marketing
           </option>
+
           <option value="Other Digital Solutions">
             Other Digital Solutions
           </option>
+
           <option value="General Question">
             General Question
           </option>
@@ -281,60 +402,10 @@ export default function ContactForm() {
       >
         <Send size={18} />
 
-        {isSubmitting ? "Sending Message..." : "Send Message"}
+        {isSubmitting
+          ? "Sending Message..."
+          : "Send Message"}
       </button>
-
-      {/* SUCCESS MESSAGE */}
-      {status === "success" && (
-        <div
-          role="status"
-          className="
-            flex
-            p-4
-            text-green-300
-            bg-green-500/10
-            rounded-lg border border-green-500/30
-            items-start gap-3
-          "
-        >
-          <CheckCircle
-            size={22}
-            className="
-              shrink-0
-            "
-          />
-          <p>
-            Your message was sent successfully!
-            Thank you for contacting Rekode Digital.
-          </p>
-        </div>
-      )}
-
-      {/* ERROR MESSAGE */}
-      {status === "error" && (
-        <div
-          role="alert"
-          className="
-            flex
-            p-4
-            text-red-300
-            bg-red-500/10
-            rounded-lg border border-red-500/30
-            items-start gap-3
-          "
-        >
-          <AlertCircle
-            size={22}
-            className="
-              shrink-0
-            "
-          />
-          <p>
-            Your message could not be sent.
-            Please try again or email getrekode@gmail.com.
-          </p>
-        </div>
-      )}
 
       {/* PRIVACY NOTICE */}
       <p
@@ -342,8 +413,8 @@ export default function ContactForm() {
           text-center text-xs leading-6 text-slate-400
         "
       >
-        Your information will only be used to respond to your inquiry.
-        We respect your privacy.
+        Your information will only be used to respond
+        to your inquiry. We respect your privacy.
       </p>
     </form>
   );
