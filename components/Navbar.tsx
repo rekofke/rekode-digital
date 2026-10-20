@@ -74,7 +74,7 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/#work"
+              href="/portfolio"
               className="
                 text-sm font-medium text-slate-300
                 transition hover:text-[#C9784A]
@@ -207,7 +207,7 @@ export default function Navbar() {
               </Link>
 
               <Link
-                href="/#work"
+                href="/portfolio"
                 onClick={closeMenu}
                 className="
                   py-4
