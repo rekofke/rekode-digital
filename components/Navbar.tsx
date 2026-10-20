@@ -73,6 +73,15 @@ export default function Navbar() {
               Services
             </Link>
 
+
+            <Link
+              href="/pricing"
+              className="text-sm font-medium text-slate-300 transition hover:text-[#C9784A]"
+            >
+              Pricing
+            </Link>
+
+
             <Link
               href="/portfolio"
               className="
@@ -205,6 +214,21 @@ export default function Navbar() {
               >
                 Services
               </Link>
+
+
+              <Link
+                  href="/pricing"
+                  onClick={closeMenu}
+                  className="
+                    py-4
+                    text-slate-300
+                    border-b border-white/5
+                    transition hover:text-[#C9784A]
+                  "
+                >
+                Pricing
+              </Link>
+
 
               <Link
                 href="/portfolio"
