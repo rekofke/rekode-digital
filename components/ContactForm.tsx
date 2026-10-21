@@ -1,42 +1,52 @@
 
 "use client";
 
-import {
-  useState,
-  useRef,
-  type FormEvent,
-} from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
 
-import {
-  Send,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
+const allowedPackages = [
+  "Starter Website",
+  "Business Growth",
+  "Custom Digital Solutions",
+];
+
+const fieldStyle =
+  "w-full rounded-md border border-white/15 bg-[#071426] px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-[#C9784A]";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const [status, setStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
 
+  const [selectedPackage, setSelectedPackage] = useState("");
   const notificationRef = useRef<HTMLDivElement>(null);
 
-  const fieldStyle =
-    "w-full rounded-md border border-white/15 bg-[#071426] px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-[#C9784A]";
+  // Read the selected package from the Pricing page URL.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const packageName = params.get("package");
 
-  function showNotification() {
-    requestAnimationFrame(() => {
-      notificationRef.current?.scrollIntoView({
+    if (packageName && allowedPackages.includes(packageName)) {
+      setSelectedPackage(packageName);
+    }
+  }, []);
+
+  // Scroll to the confirmation after it appears.
+  useEffect(() => {
+    if (status !== "success" && status !== "error") return;
+
+    const notification = notificationRef.current;
+
+    if (notification) {
+      notification.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
 
-      notificationRef.current?.focus({
-        preventScroll: true,
-      });
-    });
-  }
+      notification.focus({ preventScroll: true });
+    }
+  }, [status]);
 
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>
@@ -51,6 +61,17 @@ export default function ContactForm() {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    const originalMessage = String(
+      formData.get("message") || ""
+    );
+
+    const fullMessage = selectedPackage
+      ? "Package requested: " +
+        selectedPackage +
+        "\n\n" +
+        originalMessage
+      : originalMessage;
+
     const submission = {
       name: formData.get("name"),
       business: formData.get("business"),
@@ -58,7 +79,7 @@ export default function ContactForm() {
       phone: formData.get("phone"),
       website: formData.get("website"),
       service: formData.get("service"),
-      message: formData.get("message"),
+      message: fullMessage,
     };
 
     try {
@@ -76,11 +97,9 @@ export default function ContactForm() {
 
       form.reset();
       setStatus("success");
-      showNotification();
     } catch (error) {
       console.error("Contact form error:", error);
       setStatus("error");
-      showNotification();
     } finally {
       setIsSubmitting(false);
     }
@@ -93,13 +112,50 @@ export default function ContactForm() {
         mt-8 space-y-6
       "
     >
-      {/* SUCCESS CONFIRMATION */}
+      {/* SELECTED WEBSITE PACKAGE */}
+      {selectedPackage && (
+        <div
+          className="
+            p-5
+            bg-[#C9784A]/10
+            rounded-xl border border-[#C9784A]/40
+          "
+        >
+          <p
+            className="
+              text-sm font-semibold text-[#C9784A]
+            "
+          >
+            Your Selected Package
+          </p>
+
+          <p
+            className="
+              mt-2
+              text-xl font-bold text-white
+            "
+          >
+            {selectedPackage}
+          </p>
+
+          <p
+            className="
+              mt-2
+              text-sm leading-6 text-slate-300
+            "
+          >
+            Tell us about your project and we'll prepare
+            a personalized quote.
+          </p>
+        </div>
+      )}
+
+      {/* SUCCESS MESSAGE */}
       {status === "success" && (
         <div
           ref={notificationRef}
           tabIndex={-1}
           role="status"
-          aria-live="polite"
           className="
             p-6
             text-center
@@ -138,7 +194,7 @@ export default function ContactForm() {
         </div>
       )}
 
-      {/* ERROR NOTIFICATION */}
+      {/* ERROR MESSAGE */}
       {status === "error" && (
         <div
           ref={notificationRef}
@@ -386,7 +442,7 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* SUBMIT BUTTON */}
+      {/* SEND BUTTON */}
       <button
         type="submit"
         disabled={isSubmitting}

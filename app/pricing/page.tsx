@@ -269,7 +269,7 @@ export default function PricingPage() {
               "
             >
               These packages are examples of common project
-              scopes. We'll confirm the right fit and final
+              scopes. We&apos;ll confirm the right fit and final
               investment after discussing your business.
             </p>
           </div>
@@ -438,8 +438,7 @@ export default function PricingPage() {
                     "
                   >
                     <Link
-                      href="/contact"
-                      className={item.featured
+                          href={`/contact?package=${encodeURIComponent(item.name)}`}                      className={item.featured
                           ? "flex items-center justify-center gap-2 rounded-md bg-[#C9784A] px-6 py-4 font-semibold text-white transition hover:bg-[#D8895B]"
                           : "flex items-center justify-center gap-2 rounded-md border border-[#C9784A]/60 px-6 py-4 font-semibold text-[#E5A77C] transition hover:bg-[#C9784A] hover:text-white"}
                     >
@@ -470,6 +469,140 @@ export default function PricingPage() {
           </p>
         </div>
       </section>
+
+        
+      {/* WHO EACH PACKAGE IS FOR */}
+      <section
+        className="
+          px-6 pb-24
+          bg-[#071426]
+          lg:px-8
+        "
+      >
+        <div
+          className="
+            max-w-7xl
+            mx-auto
+          "
+        >
+          <div
+            className="
+              max-w-3xl
+              mx-auto
+              text-center
+            "
+          >
+            <p
+              className="
+                text-sm font-semibold tracking-[0.25em] text-[#C9784A]
+                uppercase
+              "
+            >
+              Find Your Fit
+            </p>
+
+            <h2
+              className="
+                mt-4
+                text-3xl font-bold
+                sm:text-4xl
+              "
+            >
+              Which Website Package Is Right for You?
+            </h2>
+
+            <p
+              className="
+                mt-5
+                leading-8 text-slate-400
+              "
+            >
+              You don't need to know anything about web
+              development to get started. Choose the situation
+              that best describes your business.
+            </p>
+          </div>
+
+          <div
+            className="
+              grid
+              mt-12
+              gap-6
+              md:grid-cols-3
+            "
+          >
+            {[
+              {
+                title: "I'm Just Getting Started",
+                package: "Starter Website",
+                description:
+                  "You need a professional online home where customers can learn about your business and contact you.",
+              },
+              {
+                title: "I'm Ready to Grow",
+                package: "Business Growth",
+                description:
+                  "You want more service information, stronger calls to action, and better opportunities to generate inquiries.",
+              },
+              {
+                title: "I Need Something Unique",
+                package: "Custom Digital Solutions",
+                description:
+                  "Your business needs specialized features, integrations, or workflows beyond a standard website.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="
+                  p-7
+                  bg-[#09182b]
+                  rounded-xl border border-white/10
+                "
+              >
+                <h3
+                  className="
+                    text-xl font-bold text-white
+                  "
+                >
+                  {item.title}
+                </h3>
+
+                <p
+                  className="
+                    mt-3
+                    font-semibold text-[#C9784A]
+                  "
+                >
+                  {item.package}
+                </p>
+
+                <p
+                  className="
+                    mt-4
+                    leading-7 text-slate-400
+                  "
+                >
+                  {item.description}
+                </p>
+
+                <Link
+                  href="/contact"
+                  className="
+                    inline-flex
+                    mt-7
+                    font-semibold text-[#C9784A]
+                    items-center gap-2 transition hover:text-[#E5A77C]
+                  "
+                >
+                  Let's Discuss Your Project
+                  <ArrowRight size={18} />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* FLEXIBLE SERVICES */}
       <section
@@ -535,7 +668,7 @@ export default function PricingPage() {
                 text-xl font-bold
               "
             >
-              Let's Find the Right Fit.
+              Let&apos;s Find the Right Fit.
             </h3>
 
             <p
@@ -544,8 +677,8 @@ export default function PricingPage() {
                 leading-7 text-slate-400
               "
             >
-              Tell us what you're trying to accomplish.
-              We'll discuss the scope and recommend a
+              Tell us what you&apos;re trying to accomplish.
+              We&apos;ll discuss the scope and recommend a
               practical approach before quoting the work.
             </p>
 
@@ -564,6 +697,161 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      
+      {/* WHY CHOOSE REKODE DIGITAL */}
+      <section
+        className="
+          px-6 py-24
+          bg-[#071426]
+          lg:px-8
+        "
+      >
+        <div
+          className="
+            max-w-7xl
+            mx-auto
+          "
+        >
+          <div
+            className="
+              max-w-3xl
+              mx-auto
+              text-center
+            "
+          >
+            <p
+              className="
+                text-sm font-semibold tracking-[0.25em] text-[#C9784A]
+                uppercase
+              "
+            >
+              The Rekode Difference
+            </p>
+
+            <h2
+              className="
+                mt-4
+                text-3xl font-bold
+                sm:text-4xl
+              "
+            >
+              Big-City Capabilities.
+              <span
+                className="
+                  block
+                  text-[#C9784A]
+                "
+              >
+                Hometown Values.
+              </span>
+            </h2>
+
+            <p
+              className="
+                mt-6
+                leading-8 text-slate-400
+              "
+            >
+              Your business deserves more than a generic
+              website. We believe in understanding what
+              makes your business unique and providing
+              practical solutions that support your goals.
+            </p>
+          </div>
+
+          <div
+            className="
+              grid
+              mt-14
+              gap-6
+              md:grid-cols-2
+              lg:grid-cols-4
+            "
+          >
+            {[
+              {
+                title: "Locally Focused",
+                description:
+                  "Based in Winnemucca, Nevada, with an understanding of small-town businesses and rural communities.",
+              },
+              {
+                title: "Transparent Pricing",
+                description:
+                  "Clear starting prices and personalized quotes so you understand the scope before committing.",
+              },
+              {
+                title: "Personalized Approach",
+                description:
+                  "Solutions tailored to your business, your customers, and what you want to accomplish.",
+              },
+              {
+                title: "Practical Solutions",
+                description:
+                  "Professional websites and digital tools designed to solve real problems without unnecessary complexity.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="
+                  p-7
+                  bg-[#09182b]
+                  rounded-2xl border border-white/10
+                  transition hover:border-[#C9784A]/40
+                "
+              >
+                <CheckCircle2
+                  size={29}
+                  className="
+                    text-[#C9784A]
+                  "
+                />
+
+                <h3
+                  className="
+                    mt-6
+                    text-xl font-bold
+                  "
+                >
+                  {item.title}
+                </h3>
+
+                <p
+                  className="
+                    mt-4
+                    leading-7 text-slate-400
+                  "
+                >
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="
+              mt-12
+              text-center
+            "
+          >
+            <Link
+              href="/contact"
+              className="
+                inline-flex
+                px-8 py-4
+                font-semibold text-white
+                bg-[#C9784A]
+                rounded-md
+                items-center justify-center gap-2 transition hover:bg-[#D8895B]
+              "
+            >
+              Let's Talk About Your Business
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
 
       {/* PRICING FAQ */}
       <section
@@ -695,7 +983,7 @@ export default function PricingPage() {
               sm:text-5xl
             "
           >
-            Let's Talk About Your Business.
+            Let&apos;s Talk About Your Business.
           </h2>
 
           <p
