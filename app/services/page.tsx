@@ -252,7 +252,7 @@ export default function ServicesPage() {
                 items-center justify-center transition hover:border-[#C9784A] hover:text-[#C9784A]
               "
             >
-              Let's Talk About Your Project
+              Let&apos;s Talk About Your Project
             </Link>
           </div>
         </div>
@@ -299,8 +299,8 @@ export default function ServicesPage() {
               leading-8 text-slate-400
             "
           >
-            Whether you're just getting started or looking to
-            improve what you already have, we'll help identify
+            Whether you&apos;re just getting started or looking to
+            improve what you already have, we&apos;ll help identify
             solutions that make sense for your business.
           </p>
         </div>
@@ -525,7 +525,7 @@ export default function ServicesPage() {
                 leading-8 text-slate-400
               "
             >
-              We're based in Winnemucca, Nevada, and we're
+              We&apos;re based in Winnemucca, Nevada, and we&apos;re
               proud to serve businesses throughout Northern
               Nevada and beyond.
             </p>
@@ -642,7 +642,7 @@ export default function ServicesPage() {
             >
               No confusing process or unnecessary complexity.
               Just a straightforward way to improve your
-              business's digital presence.
+              business&apos;s digital presence.
             </p>
           </div>
 
@@ -747,7 +747,7 @@ export default function ServicesPage() {
               sm:text-5xl
             "
           >
-            Let's Build Something Better.
+            Let&apos;s Build Something Better.
           </h2>
 
           <p
@@ -759,7 +759,7 @@ export default function ServicesPage() {
           >
             Whether you need a new website, better local
             visibility, or help choosing your next digital
-            step, let's start with a conversation.
+            step, let&apos;s start with a conversation.
           </p>
 
           <div

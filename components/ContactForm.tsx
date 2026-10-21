@@ -144,7 +144,7 @@ export default function ContactForm() {
               text-sm leading-6 text-slate-300
             "
           >
-            Tell us about your project and we'll prepare
+            Tell us about your project and we&apos;ll prepare
             a personalized quote.
           </p>
         </div>
