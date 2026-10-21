@@ -391,9 +391,9 @@ export default function PortfolioPage() {
                   aria-pressed={activeCategory === category}
                   onClick={() => setActiveCategory(category)}
                   className={
-                    ${activeCategory === category
+                    activeCategory === category
                       ? "rounded-full border border-[#C9784A] bg-[#C9784A]/15 px-4 py-2 text-sm font-semibold text-[#E5A77C] transition"
-                      : "rounded-full border border-white/10 bg-[#071426]/60 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-[#C9784A]/40 hover:text-[#E5A77C]"}
+                      : "rounded-full border border-white/10 bg-[#071426]/60 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-[#C9784A]/40 hover:text-[#E5A77C]"
                   }
                 >
                   {category}

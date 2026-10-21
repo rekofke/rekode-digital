@@ -796,9 +796,9 @@ export default function HighDesertGrillPage() {
                 aria-pressed={activeCategory === category}
                 onClick={() => setActiveCategory(category)}
                 className={
-                  ${activeCategory === category
+                  activeCategory === category
                     ? "rounded-full bg-[#A66535] px-6 py-3 text-sm font-bold text-white"
-                    : "rounded-full border border-stone-300 bg-white px-6 py-3 text-sm font-bold text-stone-700 transition hover:border-[#A66535]"}
+                    : "rounded-full border border-stone-300 bg-white px-6 py-3 text-sm font-bold text-stone-700 transition hover:border-[#A66535]"
                 }
               >
                 {category}
@@ -1430,9 +1430,7 @@ export default function HighDesertGrillPage() {
                       id="guest-name"
                       required
                       placeholder="Sample Guest"
-                      className={
-                        ${inputStyle}
-                      }
+                      className={inputStyle}
                     />
                   </div>
 
@@ -1459,9 +1457,7 @@ export default function HighDesertGrillPage() {
                         type="date"
                         required
                         min={new Date().toLocaleDateString("en-CA")}
-                        className={
-                          ${inputStyle}
-                        }
+                        className={inputStyle}
                       />
                     </div>
 
@@ -1480,9 +1476,7 @@ export default function HighDesertGrillPage() {
                         id="guest-party"
                         required
                         defaultValue=""
-                        className={
-                          ${inputStyle}
-                        }
+                        className={inputStyle}
                       >
                         <option value="" disabled>
                           Select guests
@@ -1516,9 +1510,7 @@ export default function HighDesertGrillPage() {
                       id="guest-time"
                       required
                       defaultValue=""
-                      className={
-                        ${inputStyle}
-                      }
+                      className={inputStyle}
                     >
                       <option value="" disabled>
                         Choose a time
