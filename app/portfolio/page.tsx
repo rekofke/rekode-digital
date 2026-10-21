@@ -29,6 +29,22 @@ type Project = {
 
 const projects: Project[] = [
   {
+    name: "High Desert Grill & Steakhouse",
+    category: "Website Concepts",
+    industry: "Restaurants & Hospitality",
+    description:
+      "An upscale Western steakhouse website featuring an interactive food menu, signature dishes, restaurant information, and a demonstration reservation experience.",
+    image:
+      "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1200&q=85",
+    href: "/work/high-desert-grill",
+    features: [
+      "Interactive Menu",
+      "Featured Dishes",
+      "Reservation Demo",
+    ],
+  },
+
+  {
     name: "Summit Ridge Construction",
     category: "Website Concepts",
     industry: "Construction & Contracting",
