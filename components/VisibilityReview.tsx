@@ -1,52 +1,119 @@
+
 "use client";
 
-import { FormEvent, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
+
+import {
+  ArrowRight,
+  CheckCircle2,
+  AlertCircle,
+  SearchCheck,
+} from "lucide-react";
+
+const inputClass =
+  "w-full rounded-md border border-white/15 bg-[#09182b] px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-[#C9784A]";
+
+const reviewPoints = [
+  {
+    title: "Local search visibility",
+    detail:
+      "How easily customers can find your business in Google and local search results.",
+  },
+  {
+    title: "Website and mobile experience",
+    detail:
+      "How clearly your website presents your business and works on a phone.",
+  },
+  {
+    title: "Trust and first impressions",
+    detail:
+      "Whether your online presence helps customers feel confident contacting you.",
+  },
+  {
+    title: "Next-step opportunities",
+    detail:
+      "Practical ways to improve your online visibility and customer experience.",
+  },
+];
 
 export default function VisibilityReview() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const statusRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status !== "idle") {
+      statusRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+
+      statusRef.current?.focus({
+        preventScroll: true,
+      });
+    }
+  }, [status]);
+
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
 
     if (isSubmitting) return;
-
-    setIsSubmitting(true);
-    setStatus("idle");
 
     const form = event.currentTarget;
     const formData = new FormData(form);
 
     const submission = {
-      name: formData.get("name"),
-      business: formData.get("business"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      website: formData.get("website"),
-      message: formData.get("message"),
+      name: String(formData.get("name") || ""),
+      business: String(formData.get("business") || ""),
+      email: String(formData.get("email") || ""),
+      phone: String(formData.get("phone") || ""),
+      website: String(formData.get("website") || ""),
+      message: String(formData.get("message") || ""),
     };
 
+    setIsSubmitting(true);
+    setStatus("idle");
+
     try {
-      const response = await fetch("/api/visibility-review", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submission),
-      });
+      const response = await fetch(
+        "/api/visibility-review",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submission),
+        }
+      );
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Submission failed");
+        throw new Error(
+          "Visibility review request failed"
+        );
       }
 
-      setStatus("success");
       form.reset();
+      setStatus("success");
     } catch (error) {
-    console.error("Visibility review submission error:", error);
-    setStatus("error");
+      console.error(
+        "Visibility review submission error:",
+        error
+      );
+
+      setStatus("error");
     } finally {
-    setIsSubmitting(false);
+      setIsSubmitting(false);
     }
   }
 
@@ -55,19 +122,20 @@ export default function VisibilityReview() {
       id="visibility-review"
       className="
         overflow-hidden
-        px-6 py-28
+        px-6 py-24
         text-white
         bg-[#071426]
-        relative
+        relative scroll-mt-20
         lg:px-8
       "
     >
-      {/* Background glow */}
       <div
+        aria-hidden="true"
         className="
           h-[650px] w-[650px]
           bg-[#C9784A]/10
           rounded-full
+          pointer-events-none
           absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 blur-[150px]
         "
       />
@@ -79,7 +147,8 @@ export default function VisibilityReview() {
           relative
         "
       >
-        {/* Heading */}
+        {/* Section Heading */}
+
         <div
           className="
             max-w-3xl
@@ -89,8 +158,7 @@ export default function VisibilityReview() {
         >
           <p
             className="
-              mb-4
-              text-sm font-semibold tracking-[0.3em] text-[#C9784A]
+              text-sm font-semibold tracking-[0.23em] text-[#C9784A]
               uppercase
             "
           >
@@ -99,32 +167,46 @@ export default function VisibilityReview() {
 
           <h2
             className="
+              mt-5
               text-4xl font-bold leading-tight tracking-tight
               sm:text-5xl
             "
           >
-            How easy is it for customers
+            How Easily Can Customers
             <span
               className="
                 block
                 text-[#C9784A]
               "
             >
-              to find and choose you?
+              Find Your Business Online?
             </span>
           </h2>
 
           <p
             className="
               max-w-2xl
-              mx-auto mt-7
+              mx-auto mt-6
               text-lg leading-8 text-slate-300
             "
           >
-            Tell us a little about your business and we&apos;ll take a look at your
-            online presence and identify practical opportunities to improve it.
+            Get a personalized look at your business&apos;s
+            online presence and discover practical
+            opportunities to improve visibility,
+            credibility, and customer experience.
+          </p>
+
+          <p
+            className="
+              mt-4
+              text-sm font-semibold text-slate-300
+            "
+          >
+            No obligation. No high-pressure sales pitch.
           </p>
         </div>
+
+        {/* Main Content */}
 
         <div
           className="
@@ -135,7 +217,8 @@ export default function VisibilityReview() {
             lg:grid-cols-5
           "
         >
-          {/* What we'll review */}
+          {/* Left Column */}
+
           <div
             className="
               p-8
@@ -143,53 +226,69 @@ export default function VisibilityReview() {
               lg:p-12 lg:col-span-2
             "
           >
-            <p
+            <div
               className="
-                text-sm font-semibold tracking-[0.2em] text-[#C9784A]
-                uppercase
+                inline-flex
+                px-4 py-2
+                text-xs font-semibold tracking-wider text-[#E5A77C]
+                bg-[#C9784A]/10
+                rounded-full
+                items-center gap-2 uppercase
               "
             >
-              What We&apos;ll Review
-            </p>
+              <SearchCheck size={17} />
+              Your Free Review
+            </div>
+
+            <h3
+              className="
+                mt-6
+                text-2xl font-bold
+              "
+            >
+              Here&apos;s what we&apos;ll look at
+            </h3>
 
             <div
               className="
-                mt-8 space-y-6
+                mt-8 space-y-7
               "
             >
-              {[
-                "Your website and mobile experience",
-                "How your business appears in local search",
-                "Customer trust and first impressions",
-                "Calls-to-action and contact options",
-                "Opportunities competitors may be using",
-              ].map((item) => (
+              {reviewPoints.map((item) => (
                 <div
-                  key={item}
+                  key={item.title}
                   className="
                     flex
-                    items-start gap-4
+                    items-start gap-3
                   "
                 >
-                  <div
+                  <CheckCircle2
+                    size={23}
                     className="
-                      flex
-                      h-7 w-7
                       mt-0.5
-                      text-sm font-bold text-[#C9784A]
-                      bg-[#C9784A]/15
-                      rounded-full
-                      shrink-0 items-center justify-center
+                      text-[#C9784A]
+                      shrink-0
                     "
-                  >
-                    ✓
-                  </div>
+                  />
 
-                  <p
-                    className="
-                      leading-7 text-slate-300
-                    "
-                  >{item}</p>
+                  <div>
+                    <h4
+                      className="
+                        font-semibold text-white
+                      "
+                    >
+                      {item.title}
+                    </h4>
+
+                    <p
+                      className="
+                        mt-1
+                        text-sm leading-6 text-slate-400
+                      "
+                    >
+                      {item.detail}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -200,13 +299,13 @@ export default function VisibilityReview() {
                 border-t border-white/10
               "
             >
-              <p
+              <h4
                 className="
-                  font-semibold text-white
+                  font-semibold
                 "
               >
-                No pressure. No obligation.
-              </p>
+                What happens next?
+              </h4>
 
               <p
                 className="
@@ -214,13 +313,18 @@ export default function VisibilityReview() {
                   leading-7 text-slate-400
                 "
               >
-                Just useful feedback about where your business stands online
-                and what could make the biggest difference.
+                Share a few details below. Rekode Digital
+                will review your online presence and
+                follow up with personalized observations
+                and practical next steps. You don&apos;t
+                need an existing website to request
+                a review.
               </p>
             </div>
           </div>
 
-          {/* Form */}
+          {/* Right Column */}
+
           <div
             className="
               p-8
@@ -230,18 +334,128 @@ export default function VisibilityReview() {
               lg:p-12 lg:border-l lg:border-t-0 lg:col-span-3
             "
           >
+            <h3
+              className="
+                text-2xl font-bold
+              "
+            >
+              Request Your Free Review
+            </h3>
+
+            <p
+              className="
+                mt-2
+                text-sm leading-6 text-slate-400
+              "
+            >
+              Fields marked * are required.
+            </p>
+
+            {/* Success Message */}
+
+            {status === "success" && (
+              <div
+                ref={statusRef}
+                tabIndex={-1}
+                role="status"
+                className="
+                  mt-6 p-6
+                  text-center
+                  bg-emerald-400/10
+                  rounded-xl border-2 border-emerald-400/40
+                  scroll-mt-28 outline-none
+                "
+              >
+                <CheckCircle2
+                  size={38}
+                  className="
+                    mx-auto
+                    text-emerald-400
+                  "
+                />
+
+                <h4
+                  className="
+                    mt-3
+                    text-xl font-bold text-emerald-300
+                  "
+                >
+                  Request Sent Successfully!
+                </h4>
+
+                <p
+                  className="
+                    mt-2
+                    text-sm leading-6 text-slate-200
+                  "
+                >
+                  Thank you! Your visibility review
+                  request has been sent to Rekode Digital.
+                  We&apos;ll follow up using the contact
+                  details you provided.
+                </p>
+              </div>
+            )}
+
+            {/* Error Message */}
+
+            {status === "error" && (
+              <div
+                ref={statusRef}
+                tabIndex={-1}
+                role="alert"
+                className="
+                  mt-6 p-6
+                  text-center
+                  bg-red-400/10
+                  rounded-xl border border-red-400/40
+                  scroll-mt-28 outline-none
+                "
+              >
+                <AlertCircle
+                  size={34}
+                  className="
+                    mx-auto
+                    text-red-400
+                  "
+                />
+
+                <h4
+                  className="
+                    mt-3
+                    text-lg font-bold text-red-300
+                  "
+                >
+                  We Couldn&apos;t Send Your Request
+                </h4>
+
+                <p
+                  className="
+                    mt-2
+                    text-sm leading-6 text-slate-200
+                  "
+                >
+                  Please try again, or email
+                  getrekode@gmail.com directly.
+                  Your form entries are still here.
+                </p>
+              </div>
+            )}
+
+            {/* Review Form */}
+
             <form
               onSubmit={handleSubmit}
               className="
                 grid
-                gap-6
+                mt-7
+                gap-5
                 sm:grid-cols-2
               "
             >
-              {/* Name */}
               <div>
                 <label
-                  htmlFor="name"
+                  htmlFor="review-name"
                   className="
                     block
                     mb-2
@@ -252,26 +466,20 @@ export default function VisibilityReview() {
                 </label>
 
                 <input
-                  id="name"
+                  id="review-name"
                   name="name"
                   type="text"
                   required
-                  placeholder="John Smith"
-                  className="
-                    w-full
-                    px-4 py-3.5
-                    text-white
-                    bg-[#09182b]
-                    rounded-md border border-white/10
-                    outline-none transition placeholder:text-slate-600 focus:border-[#C9784A]
-                  "
+                  maxLength={120}
+                  autoComplete="name"
+                  placeholder="Your full name"
+                  className={inputClass}
                 />
               </div>
 
-              {/* Business */}
               <div>
                 <label
-                  htmlFor="business"
+                  htmlFor="review-business"
                   className="
                     block
                     mb-2
@@ -282,149 +490,125 @@ export default function VisibilityReview() {
                 </label>
 
                 <input
-                  id="business"
+                  id="review-business"
                   name="business"
                   type="text"
                   required
-                  placeholder="Your Business"
-                  className="
-                    w-full
-                    px-4 py-3.5
-                    text-white
-                    bg-[#09182b]
-                    rounded-md border border-white/10
-                    outline-none transition placeholder:text-slate-600 focus:border-[#C9784A]
-                  "
+                  maxLength={150}
+                  placeholder="Your business name"
+                  className={inputClass}
                 />
               </div>
 
-              {/* Email */}
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="review-email"
                   className="
                     block
                     mb-2
                     text-sm font-medium text-slate-300
                   "
                 >
-                  Email *
+                  Email Address *
                 </label>
 
                 <input
-                  id="email"
+                  id="review-email"
                   name="email"
                   type="email"
                   required
+                  maxLength={254}
+                  autoComplete="email"
                   placeholder="you@business.com"
-                  className="
-                    w-full
-                    px-4 py-3.5
-                    text-white
-                    bg-[#09182b]
-                    rounded-md border border-white/10
-                    outline-none transition placeholder:text-slate-600 focus:border-[#C9784A]
-                  "
+                  className={inputClass}
                 />
               </div>
 
-              {/* Phone */}
               <div>
                 <label
-                  htmlFor="phone"
+                  htmlFor="review-phone"
                   className="
                     block
                     mb-2
                     text-sm font-medium text-slate-300
                   "
                 >
-                  Phone
+                  Phone Number
                 </label>
 
                 <input
-                  id="phone"
+                  id="review-phone"
                   name="phone"
                   type="tel"
+                  maxLength={40}
+                  autoComplete="tel"
                   placeholder="(775) 555-1234"
-                  className="
-                    w-full
-                    px-4 py-3.5
-                    text-white
-                    bg-[#09182b]
-                    rounded-md border border-white/10
-                    outline-none transition placeholder:text-slate-600 focus:border-[#C9784A]
-                  "
+                  className={inputClass}
                 />
               </div>
 
-              {/* Website */}
               <div
                 className="
                   sm:col-span-2
                 "
               >
                 <label
-                  htmlFor="website"
+                  htmlFor="review-website"
                   className="
                     block
                     mb-2
                     text-sm font-medium text-slate-300
                   "
                 >
-                  Website or Social Page
+                  Website or Social Media Page (optional)
                 </label>
 
                 <input
-                  id="website"
+                  id="review-website"
                   name="website"
                   type="text"
-                  placeholder="yourbusiness.com"
-                  className="
-                    w-full
-                    px-4 py-3.5
-                    text-white
-                    bg-[#09182b]
-                    rounded-md border border-white/10
-                    outline-none transition placeholder:text-slate-600 focus:border-[#C9784A]
-                  "
+                  maxLength={300}
+                  placeholder="yourbusiness.com or a social media page"
+                  className={inputClass}
                 />
+
+                <p
+                  className="
+                    mt-2
+                    text-xs text-slate-400
+                  "
+                >
+                  No website? That&apos;s okay.
+                  You can leave this blank.
+                </p>
               </div>
 
-              {/* Message */}
               <div
                 className="
                   sm:col-span-2
                 "
               >
                 <label
-                  htmlFor="message"
+                  htmlFor="review-message"
                   className="
                     block
                     mb-2
                     text-sm font-medium text-slate-300
                   "
                 >
-                  What would you like help with?
+                  What would you like to improve? (optional)
                 </label>
 
                 <textarea
-                  id="message"
+                  id="review-message"
                   name="message"
-                  rows={5}
-                  placeholder="Tell us a little about your business or what you'd like to improve..."
-                  className="
-                    w-full
-                    px-4 py-3.5
-                    text-white
-                    bg-[#09182b]
-                    rounded-md border border-white/10
-                    resize-none
-                    outline-none transition placeholder:text-slate-600 focus:border-[#C9784A]
-                  "
+                  rows={4}
+                  maxLength={5000}
+                  placeholder="Tell us about your business or anything you're concerned about online..."
+                  className={inputClass}
                 />
               </div>
 
-              {/* Submit */}
               <div
                 className="
                   sm:col-span-2
@@ -434,77 +618,53 @@ export default function VisibilityReview() {
                   type="submit"
                   disabled={isSubmitting}
                   className="
+                    flex
                     w-full
                     px-7 py-4
                     font-semibold text-white
                     bg-[#C9784A]
                     rounded-md
-                    transition duration-300 hover:-translate-y-0.5 hover:bg-[#D8895B] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0
+                    items-center justify-center gap-2 transition hover:bg-[#D8895B] disabled:cursor-not-allowed disabled:opacity-60
                   "
                 >
                   {isSubmitting
-                    ? "Sending Request..."
+                    ? "Sending Your Request..."
                     : "Request My Free Visibility Review"}
+
+                  {!isSubmitting && (
+                    <ArrowRight size={18} />
+                  )}
                 </button>
-
-                {/* Success message */}
-                {status === "success" && (
-                  <div
-                    role="status"
-                    className="
-                      mt-4 px-4 py-3
-                      text-center text-sm text-emerald-300
-                      bg-emerald-400/10
-                      rounded-md border border-emerald-400/30
-                    "
-                  >
-                    ✓ Thanks! Your request has been received. We&apos;ll be in touch
-                    soon.
-                  </div>
-                )}
-
-                {/* Error message */}
-                {status === "error" && (
-                  <div
-                    role="alert"
-                    className="
-                      mt-4 px-4 py-3
-                      text-center text-sm text-red-300
-                      bg-red-400/10
-                      rounded-md border border-red-400/30
-                    "
-                  >
-                    We couldn&apos;t send your request. Please try again or email
-                    us directly at getrekode@gmail.com.
-                  </div>
-                )}
 
                 <p
                   className="
                     mt-4
-                    text-center text-xs leading-5 text-slate-500
+                    text-center text-xs leading-6 text-slate-400
                   "
                 >
-                  Your information will only be used to respond to your request.
+                  We&apos;ll use the information you
+                  provide only to respond to your request.
+                  No obligation.
                 </p>
               </div>
             </form>
           </div>
         </div>
 
-        {/* Direct contact */}
+        {/* Direct Contact */}
+
         <p
           className="
             mt-8
-            text-center text-sm text-slate-500
+            text-center text-sm text-slate-400
           "
         >
           Prefer email?{" "}
           <a
             href="mailto:getrekode@gmail.com"
             className="
-              text-[#C9784A]
-              transition hover:text-[#D8895B]
+              font-semibold text-[#C9784A]
+              hover:text-[#E5A77C]
             "
           >
             getrekode@gmail.com

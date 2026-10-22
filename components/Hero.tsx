@@ -1,4 +1,7 @@
+
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -10,9 +13,11 @@ export default function Hero() {
         relative items-center
       "
     >
-      {/* Background effects */}
+      {/* BACKGROUND EFFECTS */}
       <div
+        aria-hidden="true"
         className="
+          pointer-events-none
           absolute inset-0
         "
       >
@@ -24,6 +29,7 @@ export default function Hero() {
             absolute -right-40 top-20 blur-[120px]
           "
         />
+
         <div
           className="
             h-[450px] w-[450px]
@@ -34,15 +40,16 @@ export default function Hero() {
         />
       </div>
 
-      {/* Subtle grid */}
+      {/* SUBTLE GRID */}
       <div
+        aria-hidden="true"
         style={{
           backgroundImage:
-            "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)",
+            "linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent, #ffffff 1px)",
           backgroundSize: "60px 60px",
         }}
         className="
-          opacity-[0.04]
+          pointer-events-none opacity-[0.04]
           absolute inset-0
         "
       />
@@ -56,28 +63,28 @@ export default function Hero() {
           lg:grid-cols-2 lg:px-8
         "
       >
-        {/* Left side */}
+        {/* LEFT SIDE */}
         <div>
+          {/* LOCAL BUSINESS POSITIONING */}
           <p
             className="
               mb-6
-              text-sm font-semibold tracking-[0.3em] text-[#C9784A]
+              text-sm font-semibold tracking-[0.2em] text-[#C9784A]
               uppercase
             "
           >
-            Websites • Local Visibility • Digital Solutions
+            Winnemucca, Nevada · Serving Northern Nevada
           </p>
 
+          {/* MAIN HEADLINE */}
           <h1
             className="
-              text-5xl font-bold leading-[1.08] tracking-tight text-white
-              sm:text-6xl
-              lg:text-7xl
+              text-4xl font-bold leading-[1.1] tracking-tight text-white
+              sm:text-5xl
+              lg:text-6xl
             "
           >
-            Helping Local
-            <br />
-            Businesses
+            Professional Websites
             <span
               className="
                 block
@@ -85,10 +92,20 @@ export default function Hero() {
                 text-[#C9784A]
               "
             >
-              Rewrite Their Future.
+              & Digital Solutions
+            </span>
+            <span
+              className="
+                block
+                mt-3
+                text-white
+              "
+            >
+              for Northern Nevada Businesses.
             </span>
           </h1>
 
+          {/* VALUE PROPOSITION */}
           <p
             className="
               max-w-xl
@@ -96,10 +113,47 @@ export default function Hero() {
               text-lg leading-8 text-slate-300
             "
           >
-            Modern websites and practical digital solutions that help local
-            businesses get found, look professional, and grow online.
+            Help your business get found online, look
+            professional, and turn more visitors into
+            customers. Rekode Digital builds practical,
+            affordable digital solutions tailored to
+            local businesses.
           </p>
 
+          {/* BUSINESS BENEFITS */}
+          <div
+            className="
+              flex flex-wrap
+              mt-7
+              gap-x-6 gap-y-3
+            "
+          >
+            {[
+              "Professional Web Design",
+              "Local Online Visibility",
+              "Personalized Support",
+            ].map((benefit) => (
+              <div
+                key={benefit}
+                className="
+                  flex
+                  text-sm text-slate-300
+                  items-center gap-2
+                "
+              >
+                <CheckCircle2
+                  size={17}
+                  className="
+                    text-[#C9784A]
+                    shrink-0
+                  "
+                />
+                <span>{benefit}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* CALLS TO ACTION */}
           <div
             className="
               flex flex-wrap
@@ -110,32 +164,46 @@ export default function Hero() {
             <a
               href="#visibility-review"
               className="
+                inline-flex
                 px-7 py-4
                 font-semibold text-white
                 bg-[#C9784A]
                 rounded-md
                 shadow-lg shadow-[#C9784A]/10
-                transition duration-300 hover:-translate-y-0.5 hover:bg-[#d8895b]
+                items-center justify-center gap-2 transition duration-300 hover:-translate-y-0.5 hover:bg-[#D8895B]
               "
             >
               Get a Free Visibility Review
+              <ArrowRight size={18} />
             </a>
 
-            <a
-              href="#work"
+            <Link
+              href="/pricing"
               className="
+                inline-flex
                 px-7 py-4
                 font-semibold text-white
                 rounded-md border border-slate-600
-                transition duration-300 hover:border-[#C9784A] hover:text-[#C9784A]
+                items-center justify-center gap-2 transition duration-300 hover:border-[#C9784A] hover:text-[#C9784A]
               "
             >
-              See Our Work
-            </a>
+              Explore Website Packages
+              <ArrowRight size={18} />
+            </Link>
           </div>
+
+          {/* BRAND MESSAGE */}
+          <p
+            className="
+              mt-9
+              text-sm font-medium tracking-wide text-slate-400
+            "
+          >
+            Hometown Values. Modern Solutions.
+          </p>
         </div>
 
-        {/* Right side */}
+        {/* RIGHT SIDE — EXISTING REKODE LOGO */}
         <div
           className="
             hidden
@@ -150,7 +218,7 @@ export default function Hero() {
               relative items-center justify-center
             "
           >
-            {/* Outer rings */}
+            {/* OUTER RINGS */}
             <div
               className="
                 h-full w-full
@@ -158,6 +226,7 @@ export default function Hero() {
                 absolute
               "
             />
+
             <div
               className="
                 h-[340px] w-[340px]
@@ -165,6 +234,7 @@ export default function Hero() {
                 absolute
               "
             />
+
             <div
               className="
                 h-[250px] w-[250px]
@@ -174,43 +244,44 @@ export default function Hero() {
               "
             />
 
-            {/* Rekode logo */}
+            {/* REKODE LOGO */}
             <div
-                className="
+              className="
                 flex
                 h-[230px] w-[230px]
                 relative items-center justify-center
-                "
+              "
             >
-            <Image
+              <Image
                 src="/rekode_transparent.png"
-                alt="Rekode Digital"
+                alt="Rekode Digital logo"
                 width={230}
                 height={230}
                 priority
                 className="
-                object-contain
-                h-auto w-full
-                drop-shadow-2xl
+                  object-contain
+                  h-auto w-full
+                  drop-shadow-2xl
                 "
-            />
+              />
             </div>
 
-            {/* Decorative text */}
+            {/* DECORATIVE TEXT */}
             <div
               className="
-                text-xs font-semibold tracking-[0.45em] text-slate-400
+                text-xs font-semibold tracking-[0.35em] text-slate-400
                 absolute bottom-8 uppercase
               "
             >
-              Small Business • Big Presence
+              Small Business · Big Presence
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom accent */}
+      {/* BOTTOM ACCENT */}
       <div
+        aria-hidden="true"
         className="
           h-px w-[85%]
           bg-gradient-to-r from-transparent via-[#C9784A]/40 to-transparent
