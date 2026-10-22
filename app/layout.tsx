@@ -14,13 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Rekode Digital | Websites & Digital Solutions",
-    template: "%s | Rekode Digital",
-  },
+  
+title: "Web Design in Winnemucca, NV | Rekode Digital",
 
-  description:
-    "Rekode Digital helps local businesses get found, look professional, and grow online through modern websites, local visibility, branding, and practical digital solutions.",
+description:
+  "Rekode Digital builds professional, affordable websites and practical digital solutions for small businesses in Winnemucca and Northern Nevada. Get a free visibility review.",
 
   keywords: [
     "Rekode Digital",
