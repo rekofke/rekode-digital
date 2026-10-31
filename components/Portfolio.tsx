@@ -103,6 +103,23 @@ const projects: Project[] = [
       "Showing Requests",
     ],
   },
+
+  // NEW COFFEE SHOP DEMO
+  {
+    name: "Juniper & Ember Coffee House",
+    category: "Website Concepts",
+    industry: "Coffee Shops & Cafés",
+    description:
+      "A warm, modern coffee shop website concept with a categorized interactive menu, neighborhood storytelling, and a demonstration pickup-order experience.",
+    image:
+      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=85",
+    href: "/work/juniper-ember-coffee",
+    features: [
+      "Interactive Menu",
+      "Sample Pickup Bag",
+      "Mobile Friendly",
+    ],
+  },
 ];
 
 const categories: Category[] = [
@@ -393,7 +410,7 @@ export default function PortfolioPage() {
                   className={
                     activeCategory === category
                       ? "rounded-full border border-[#C9784A] bg-[#C9784A]/15 px-4 py-2 text-sm font-semibold text-[#E5A77C] transition"
-                      : "rounded-full border border-white/10 bg-[#071426]/60 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-[#C9784A]/40 hover:text-[#E5A77C]"
+                        : "rounded-full border border-white/10 bg-[#071426]/60 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-[#C9784A]/40 hover:text-[#E5A77C]"
                   }
                 >
                   {category}
