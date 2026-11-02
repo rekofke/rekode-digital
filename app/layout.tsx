@@ -13,35 +13,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  
-title: "Web Design in Winnemucca, NV | Rekode Digital",
 
-description:
-  "Rekode Digital builds professional, affordable websites and practical digital solutions for small businesses in Winnemucca and Northern Nevada. Get a free visibility review.",
+export const metadata: Metadata = {
+  metadataBase: new URL("https://rekodedigital.com"),
+
+  title: {
+    default: "Web Design in Winnemucca, NV | Rekode Digital",
+    template: "%s | Rekode Digital",
+  },
+
+  description:
+    "Rekode Digital builds professional websites and practical digital solutions for small businesses in Winnemucca and Northern Nevada. Get a free Business Visibility Review.",
 
   keywords: [
     "Rekode Digital",
-    "web design",
-    "small business websites",
-    "local business marketing",
-    "local SEO",
-    "digital solutions",
-    "business websites",
     "Winnemucca web design",
-    "Nevada web design",
+    "Northern Nevada website design",
+    "small business websites",
+    "local SEO",
+    "Google Business Profile",
+    "digital marketing Northern Nevada",
   ],
 
   authors: [{ name: "Rekode Digital" }],
   creator: "Rekode Digital",
 
   openGraph: {
-    title: "Rekode Digital | Helping Local Businesses Rewrite Their Future",
+    title: "Rekode Digital | Web Design in Northern Nevada",
     description:
-      "Modern websites and practical digital solutions built to help local businesses get found, look professional, and grow.",
-    type: "website",
-    locale: "en_US",
+      "Get found, look professional, and grow online. Websites, branding, local SEO, and practical digital solutions for small businesses.",
+    url: "https://rekodedigital.com",
     siteName: "Rekode Digital",
+    locale: "en_US",
+    type: "website",
   },
 
   robots: {
@@ -49,6 +53,7 @@ description:
     follow: true,
   },
 };
+
 
 export default function RootLayout({
   children,

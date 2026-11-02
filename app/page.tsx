@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Founder from "@/components/Founder";
 import CustomerPerspective from "@/components/CustomerPerspective";
 import RekodeReport from "@/components/RekodeReport";
+import type { Metadata } from "next";
 
 export default function Home() {
   return (
@@ -25,3 +26,12 @@ export default function Home() {
     </main>
   );
 }
+
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};

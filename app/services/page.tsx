@@ -17,11 +17,16 @@ import {
   Rocket,
 } from "lucide-react";
 
+
 export const metadata: Metadata = {
-  title: "Our Services",
+  title: "Website Design & Local SEO Services",
   description:
-    "Explore Rekode Digital's website design, local SEO, Google Business Profile, branding, social media, and digital solutions for small businesses in Northern Nevada.",
+    "Explore professional website design, local SEO, branding, Google Business Profile optimization, and digital marketing services for Northern Nevada businesses.",
+  alternates: {
+    canonical: "/services",
+  },
 };
+
 
 const services = [
   {
