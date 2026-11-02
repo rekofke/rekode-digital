@@ -1,138 +1,96 @@
-                <input
-                  id="review-phone"
-                  name="phone"
-                  type="tel"
-                  maxLength={40}
-                  autoComplete="tel"
-                  placeholder="(775) 555-1234"
-                  className={inputClass}
-                />
-              </div>
+"use client";
 
-              <div
-                className="
-                  sm:col-span-2
-                "
-              >
-                <label
-                  htmlFor="review-website"
-                  className="
-                    block
-                    mb-2
-                    text-sm font-medium text-slate-300
-                  "
-                >
-                  Website or Social Media Page (optional)
-                </label>
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
 
-                <input
-                  id="review-website"
-                  name="website"
-                  type="text"
-                  maxLength={300}
-                  placeholder="yourbusiness.com or a social media page"
-                  className={inputClass}
-                />
+import {
+  ArrowRight,
+  CheckCircle2,
+  AlertCircle,
+  SearchCheck,
+} from "lucide-react";
+import { sendGAEvent } from "@next/third-parties/google";
 
-                <p
-                  className="
-                    mt-2
-                    text-xs text-slate-400
-                  "
-                >
-                  No website? That&apos;s okay.
-                  You can leave this blank.
-                </p>
-              </div>
+const inputClass =
+  "w-full rounded-md border border-white/15 bg-[#09182b] px-4 py-3.5 text-white outline-none transition placeholder:text-slate-500 focus:border-[#C9784A]";
 
-              <div
-                className="
-                  sm:col-span-2
-                "
-              >
-                <label
-                  htmlFor="review-message"
-                  className="
-                    block
-                    mb-2
-                    text-sm font-medium text-slate-300
-                  "
-                >
-                  What would you like to improve? (optional)
-                </label>
+const reviewPoints = [
+  {
+    title: "Local search visibility",
+    detail:
+      "How easily customers can find your business in Google and local search results.",
+  },
+  {
+    title: "Website and mobile experience",
+    detail:
+      "How clearly your website presents your business and works on a phone.",
+  },
+  {
+    title: "Trust and first impressions",
+    detail:
+      "Whether your online presence helps customers feel confident contacting you.",
+  },
+  {
+    title: "Next-step opportunities",
+    detail:
+      "Practical ways to improve your online visibility and customer experience.",
+  },
+];
 
-                <textarea
-                  id="review-message"
-                  name="message"
-                  rows={4}
-                  maxLength={5000}
-                  placeholder="Tell us about your business or anything you're concerned about online..."
-                  className={inputClass}
-                />
-              </div>
+export default function VisibilityReview() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-              <div
-                className="
-                  sm:col-span-2
-                "
-              >
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="
-                    flex
-                    w-full
-                    px-7 py-4
-                    font-semibold text-white
-                    bg-[#C9784A]
-                    rounded-md
-                    items-center justify-center gap-2 transition hover:bg-[#D8895B] disabled:cursor-not-allowed disabled:opacity-60
-                  "
-                >
-                  {isSubmitting
-                    ? "Sending Your Request..."
-                    : "Request My Free Visibility Review"}
+  const [status, setStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-                  {!isSubmitting && (
-                    <ArrowRight size={18} />
-                  )}
-                </button>
+  const statusRef = useRef<HTMLDivElement>(null);
 
-                <p
-                  className="
-                    mt-4
-                    text-center text-xs leading-6 text-slate-400
-                  "
-                >
-                  We&apos;ll use the information you
-                  provide only to respond to your request.
-                  No obligation.
-                </p>
-              </div>
-            </form>
-          </div>
-        </div>
+  useEffect(() => {
+    if (status !== "idle") {
+      statusRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
 
-        {/* Direct Contact */}
+      statusRef.current?.focus({
+        preventScroll: true,
+      });
+    }
+  }, [status]);
 
-        <p
-          className="
-            mt-8
-            text-center text-sm text-slate-400
-          "
-        >
-          Prefer email?{" "}
-          <a
-            href="mailto:getrekode@gmail.com"
-            className="
-              font-semibold text-[#C9784A]
-              hover:text-[#E5A77C]
-            "
-          >
-            getrekode@gmail.com
-          </a>
-        </p>
-      </div>
-    </section>
-  );
-}
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ) {
+    event.preventDefault();
+
+    if (isSubmitting) return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const submission = {
+      name: String(formData.get("name") || ""),
+      business: String(formData.get("business") || ""),
+      email: String(formData.get("email") || ""),
+      phone: String(formData.get("phone") || ""),
+      website: String(formData.get("website") || ""),
+      message: String(formData.get("message") || ""),
+    };
+
+    setIsSubmitting(true);
+    setStatus("idle");
+
+    try {
+      const response = await fetch(
+        "/api/visibility-review",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(submission),
