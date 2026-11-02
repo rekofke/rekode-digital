@@ -65,14 +65,14 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`
-          ${geistSans.variable} ${geistMono.variable}
+          ${geistSans.variable}
+          ${geistMono.variable}
         `}
       >
         {children}
         <Analytics />
       </body>
       <GoogleAnalytics gaId="G-25QZMHJ7H3" />
-    </html>
     </html>
   );
 }
