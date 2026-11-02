@@ -10,6 +10,11 @@ import CustomerPerspective from "@/components/CustomerPerspective";
 import RekodeReport from "@/components/RekodeReport";
 import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 const businessSchema = {
   "@context": "https://schema.org",
@@ -43,8 +48,6 @@ const businessSchema = {
   },
 };
 
-
-e
 export default function Home() {
   return (
     <main>
@@ -57,13 +60,16 @@ export default function Home() {
           ),
         }}
       />
-
-
-
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/",
-  },
-};
+      <Navbar />
+      <Hero />
+      <Services />
+      <About />
+      <Portfolio />
+      <VisibilityReview />
+      <Founder />
+      <CustomerPerspective />
+      <RekodeReport />
+      <Footer />
+    </main>
+  );
+}
