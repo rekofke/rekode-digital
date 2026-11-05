@@ -35,7 +35,7 @@ export default function Footer() {
               lg:col-span-2
             "
           >
-            <a
+            <Link
               href="/"
               className="
                 inline-flex
@@ -51,14 +51,14 @@ export default function Footer() {
                   h-[85px] w-auto
                 "
               />
-            </a>
+            </Link>
 
             <p
               className="
                 max-w-md
                 mt-5
                 text-lg font-medium text-slate-300
-              
+              "
             >
               Helping Local Businesses Rewrite Their Future.
             </p>
@@ -94,7 +94,7 @@ export default function Footer() {
               "
             >
               <a
-                href="#/services"
+                href="/services"
                 className="
                   text-slate-400
                   transition hover:text-white
@@ -113,15 +113,15 @@ export default function Footer() {
                 Our Work
               </a>
 
-              <a
-                href="/about"
+              <Link
+                href="/#about"
                 className="
                   text-slate-400
                   transition hover:text-white
                 "
               >
                 About
-              </a>
+              </Link>
 
               <Link
                 href="/#visibility-review"
