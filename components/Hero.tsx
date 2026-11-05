@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -84,7 +83,7 @@ export default function Hero() {
               lg:text-6xl
             "
           >
-            Professional Websites
+            Website Design
             <span
               className="
                 block
@@ -113,11 +112,11 @@ export default function Hero() {
               text-lg leading-8 text-slate-300
             "
           >
-            Help your business get found online, look
-            professional, and turn more visitors into
-            customers. Rekode Digital builds practical,
-            affordable digital solutions tailored to
-            local businesses.
+            Rekode Digital provides professional website design, local SEO,
+            Google Business Profile optimization, branding, and digital
+            solutions for small businesses in Winnemucca and throughout Northern
+            Nevada. We help customers find your business, trust your brand, and
+            connect with you more easily.
           </p>
 
           {/* BUSINESS BENEFITS */}

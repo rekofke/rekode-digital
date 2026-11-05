@@ -1,3 +1,6 @@
+
+import Link from "next/link";
+
 const services = [
   {
     number: "01",
@@ -42,7 +45,7 @@ export default function Services() {
           mx-auto
         "
       >
-        {/* Section heading */}
+        {/* SECTION INTRODUCTION */}
         <div
           className="
             max-w-3xl
@@ -75,19 +78,27 @@ export default function Services() {
             </span>
           </h2>
 
+          {/* LOCAL SEO OPTIMIZED DESCRIPTION */}
           <p
             className="
               max-w-2xl
               mt-6
-              text-lg leading-8 text-slate-400
+              text-lg leading-8 text-slate-300
             "
           >
-            No unnecessary complexity. Just professional digital solutions
-            designed to help your business get noticed, earn trust, and grow.
+            Based in Winnemucca, Rekode Digital
+            helps Northern Nevada businesses build
+            a stronger online presence through
+            custom website design, website
+            redesign, local SEO, professional
+            branding, and practical digital
+            solutions. We focus on helping your
+            business get found, earn trust, and
+            connect with more customers.
           </p>
         </div>
 
-        {/* Service cards */}
+        {/* SERVICE CARDS */}
         <div
           className="
             grid
@@ -105,9 +116,11 @@ export default function Services() {
                 p-7
                 bg-[#071426]
                 rounded-xl border border-white/10
-                group relative transition duration-300 hover:-translate-y-2 hover:border-[#C9784A]/60
+                transition-all
+                group relative duration-300 hover:-translate-y-2 hover:border-[#C9784A]/60
               "
             >
+              {/* SERVICE NUMBER */}
               <span
                 className="
                   text-sm font-semibold text-[#C9784A]
@@ -116,6 +129,7 @@ export default function Services() {
                 {service.number}
               </span>
 
+              {/* SERVICE TITLE */}
               <h3
                 className="
                   mt-8
@@ -125,6 +139,7 @@ export default function Services() {
                 {service.title}
               </h3>
 
+              {/* SERVICE DESCRIPTION */}
               <p
                 className="
                   mt-4
@@ -134,6 +149,7 @@ export default function Services() {
                 {service.description}
               </p>
 
+              {/* HOVER ACCENT */}
               <div
                 className="
                   h-1 w-0
@@ -144,6 +160,40 @@ export default function Services() {
               />
             </div>
           ))}
+        </div>
+
+        {/* INTERNAL SEO LINK */}
+        <div
+          className="
+            mt-12
+            text-center
+          "
+        >
+          <Link
+            href="/services"
+            className="
+              inline-flex
+              px-7 py-4
+              font-semibold text-[#C9784A]
+              rounded-md border border-[#C9784A]
+              transition-all
+              items-center justify-center duration-300 hover:bg-[#C9784A] hover:text-white hover:shadow-lg hover:shadow-[#C9784A]/10
+            "
+          >
+            Explore All Website & Digital Services
+          </Link>
+
+          <p
+            className="
+              max-w-xl
+              mx-auto mt-5
+              text-sm leading-6 text-slate-400
+            "
+          >
+            From your first website to ongoing
+            digital improvements, we're here
+            to help your business move forward.
+          </p>
         </div>
       </div>
     </section>
