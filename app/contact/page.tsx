@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -38,6 +37,29 @@ const contactDetails = [
     value: "Winnemucca, Nevada",
     href: null,
     icon: MapPin,
+  },
+];
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://facebook.com/rekodedigital",
+    mark: "f",
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/rekodedigital",
+    mark: "◎",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/rekodedigital/",
+    mark: "in",
+  },
+  {
+    label: "X",
+    href: "https://x.com/rekodedigital",
+    mark: "𝕏",
   },
 ];
 
@@ -130,8 +152,8 @@ export default function ContactPage() {
               text-lg leading-8 text-slate-300
             "
           >
-            Have a question, an idea, or a business that needs a
-            stronger online presence? We&apos;d love to hear from you.
+            Have a question, an idea, or a business that needs a stronger online
+            presence? We&apos;d love to hear from you.
           </p>
         </div>
       </section>
@@ -152,7 +174,6 @@ export default function ContactPage() {
             lg:grid-cols-5
           "
         >
-
           {/* LEFT COLUMN */}
           <div
             className="
@@ -173,9 +194,9 @@ export default function ContactPage() {
                 leading-8 text-slate-400
               "
             >
-              Whether you need a new website, better Google
-              visibility, or guidance on your digital presence,
-              we&apos;re here to help you figure out the next step.
+              Whether you need a new website, better Google visibility, or
+              guidance on your digital presence, we&apos;re here to help you
+              figure out the next step.
             </p>
 
             {/* CONTACT DETAILS */}
@@ -245,6 +266,99 @@ export default function ContactPage() {
               })}
             </div>
 
+            {/* SOCIAL LINKS */}
+            <div
+              className="
+                mt-12
+              "
+            >
+              <p
+                className="
+                  text-sm font-semibold tracking-[0.2em] text-[#C9784A]
+                  uppercase
+                "
+              >
+                Follow Rekode Digital
+              </p>
+
+              <p
+                className="
+                  mt-3
+                  leading-7 text-slate-400
+                "
+              >
+                Stay connected for website concepts, digital marketing ideas,
+                local business insights, and updates from Rekode Digital.
+              </p>
+
+              <div
+                className="
+                  grid
+                  mt-6
+                  gap-4
+                  sm:grid-cols-2
+                "
+              >
+                {socialLinks.map((social) => {
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="
+                        flex
+                        px-4 py-4
+                        text-slate-300
+                        bg-[#09182b]
+                        rounded-xl border border-white/10
+                        items-center gap-3 transition hover:border-[#C9784A]/50 hover:text-white
+                      "
+                    >
+                      <div
+                        className="
+                          flex
+                          h-10 w-10
+                          text-[#C9784A]
+                          bg-[#C9784A]/10
+                          rounded-lg
+                          items-center justify-center shrink-0
+                        "
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="
+                            text-xl font-bold leading-none
+                          "
+                        >
+                          {social.mark}
+                        </span>
+                      </div>
+
+                      <div>
+                        <p
+                          className="
+                            font-semibold
+                          "
+                        >
+                          {social.label}
+                        </p>
+                        <p
+                          className="
+                            text-sm text-slate-500
+                          "
+                        >
+                          {social.label === "X"
+                            ? "@rekodedigital"
+                            : "rekodedigital"}
+                        </p>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* FREE VISIBILITY REVIEW CARD */}
             <div
               className="
@@ -275,14 +389,13 @@ export default function ContactPage() {
                   leading-7 text-slate-400
                 "
               >
-                Get a complimentary Business Visibility Review.
-                We&apos;ll take a look at your current online
-                presence and identify practical opportunities
-                for improvement.
+                Get a complimentary Business Visibility Review. We&apos;ll take
+                a look at your current online presence and identify practical
+                opportunities for improvement.
               </p>
 
               <Link
-                href="/#visibility-review"
+                href="/free-visibility-review"
                 className="
                   inline-flex
                   mt-6
@@ -307,7 +420,6 @@ export default function ContactPage() {
               lg:col-span-3
             "
           >
-
             <p
               className="
                 text-sm font-semibold tracking-[0.2em] text-[#C9784A]
@@ -332,13 +444,12 @@ export default function ContactPage() {
                 leading-7 text-slate-400
               "
             >
-              Share a little about what you&apos;re looking for,
-              and we&apos;ll take it from there.
+              Share a little about what you&apos;re looking for, and we&apos;ll
+              take it from there.
             </p>
 
             {/* INTERACTIVE FORM */}
             <ContactForm />
-
           </div>
         </div>
       </section>
@@ -358,7 +469,6 @@ export default function ContactPage() {
             mx-auto
           "
         >
-
           <div
             className="
               mb-12
@@ -391,8 +501,8 @@ export default function ContactPage() {
                 leading-7 text-slate-400
               "
             >
-              Starting a conversation with Rekode Digital is
-              simple and pressure-free.
+              Starting a conversation with Rekode Digital is simple and
+              pressure-free.
             </p>
           </div>
 
@@ -478,13 +588,12 @@ export default function ContactPage() {
               leading-8 text-slate-400
             "
           >
-            We help Northern Nevada businesses get found,
-            look professional, and grow through practical
-            digital solutions.
+            We help Northern Nevada businesses get found, look professional, and
+            grow through practical digital solutions.
           </p>
 
           <Link
-            href="/#visibility-review"
+            href="/free-visibility-review"
             className="
               inline-flex
               mt-8 px-8 py-4
