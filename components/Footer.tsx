@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -35,7 +36,7 @@ export default function Footer() {
             "
           >
             <a
-              href="#"
+              href="/"
               className="
                 inline-flex
               "
@@ -57,7 +58,7 @@ export default function Footer() {
                 max-w-md
                 mt-5
                 text-lg font-medium text-slate-300
-              "
+              
             >
               Helping Local Businesses Rewrite Their Future.
             </p>
@@ -93,7 +94,7 @@ export default function Footer() {
               "
             >
               <a
-                href="#services"
+                href="#/services"
                 className="
                   text-slate-400
                   transition hover:text-white
@@ -103,7 +104,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="#work"
+                href="/portfolio"
                 className="
                   text-slate-400
                   transition hover:text-white
@@ -113,7 +114,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="#about"
+                href="/about"
                 className="
                   text-slate-400
                   transition hover:text-white
@@ -122,15 +123,15 @@ export default function Footer() {
                 About
               </a>
 
-              <a
-                href="#visibility-review"
+              <Link
+                href="/#visibility-review"
                 className="
                   text-slate-400
                   transition hover:text-white
                 "
               >
                 Free Visibility Review
-              </a>
+              </Link>
             </nav>
           </div>
 
