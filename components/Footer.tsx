@@ -1,5 +1,25 @@
+
 import Image from "next/image";
 import Link from "next/link";
+
+const socialLinks = [
+  {
+    name: "Facebook",
+    href: "https://facebook.com/rekodedigital",
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/rekodedigital",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/rekodedigital/",
+  },
+  {
+    name: "X",
+    href: "https://x.com/rekodedigital",
+  },
+];
 
 export default function Footer() {
   return (
@@ -19,7 +39,6 @@ export default function Footer() {
           mx-auto
         "
       >
-        {/* Main footer */}
         <div
           className="
             grid
@@ -29,7 +48,8 @@ export default function Footer() {
             lg:grid-cols-4
           "
         >
-          {/* Brand */}
+
+          {/* BRAND AND SOCIAL MEDIA */}
           <div
             className="
               lg:col-span-2
@@ -67,15 +87,58 @@ export default function Footer() {
               className="
                 max-w-md
                 mt-3
-                leading-7 text-slate-500
+                leading-7 text-slate-400
               "
             >
-              Modern websites and practical digital solutions built to help
-              local businesses get found, look professional, and grow.
+              Modern websites and practical digital solutions
+              built to help local businesses get found,
+              look professional, and grow.
             </p>
+
+            {/* SOCIAL LINKS */}
+            <div
+              className="
+                mt-8
+              "
+            >
+              <p
+                className="
+                  mb-4
+                  text-sm font-semibold tracking-[0.2em] text-[#C9784A]
+                  uppercase
+                "
+              >
+                Connect With Rekode
+              </p>
+
+              <div
+                className="
+                  flex flex-wrap
+                  gap-3
+                "
+              >
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit Rekode Digital on ${social.name}`}
+                    className="
+                      px-4 py-2
+                      text-sm font-semibold text-slate-300
+                      rounded-lg border border-[#C9784A]/40
+                      transition duration-300 hover:border-[#C9784A] hover:bg-[#C9784A]/10 hover:text-white
+                    "
+                  >
+                    {social.name}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Navigation */}
+          {/* NAVIGATION */}
           <div>
             <p
               className="
@@ -93,7 +156,7 @@ export default function Footer() {
                 gap-3
               "
             >
-              <a
+              <Link
                 href="/services"
                 className="
                   text-slate-400
@@ -101,9 +164,9 @@ export default function Footer() {
                 "
               >
                 Services
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/portfolio"
                 className="
                   text-slate-400
@@ -111,7 +174,27 @@ export default function Footer() {
                 "
               >
                 Our Work
-              </a>
+              </Link>
+
+              <Link
+                href="/pricing"
+                className="
+                  text-slate-400
+                  transition hover:text-white
+                "
+              >
+                Pricing
+              </Link>
+
+              <Link
+                href="/how-it-works"
+                className="
+                  text-slate-400
+                  transition hover:text-white
+                "
+              >
+                How It Works
+              </Link>
 
               <Link
                 href="/#about"
@@ -124,7 +207,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href="/#visibility-review"
+                href="/free-visibility-review"
                 className="
                   text-slate-400
                   transition hover:text-white
@@ -135,7 +218,7 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Contact */}
+          {/* CONTACT INFORMATION */}
           <div>
             <p
               className="
@@ -198,8 +281,8 @@ export default function Footer() {
               </a>
             </div>
 
-            <a
-              href="#visibility-review"
+            <Link
+              href="/free-visibility-review"
               className="
                 inline-flex
                 mt-7 px-5 py-3
@@ -208,21 +291,28 @@ export default function Footer() {
                 transition hover:bg-[#C9784A] hover:text-white
               "
             >
-              Get Rekode
-            </a>
-            <a
-              href="/privacy-policy"
+              Get a Free Visibility Review
+            </Link>
+
+            <div
               className="
-                text-slate-400
-                transition hover:text-[#C9784A]
+                mt-5
               "
             >
-              Privacy Policy
-            </a>
+              <Link
+                href="/privacy-policy"
+                className="
+                  text-sm text-slate-400
+                  transition hover:text-[#C9784A]
+                "
+              >
+                Privacy Policy
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
+        {/* BOTTOM BAR */}
         <div
           className="
             flex flex-col
@@ -234,7 +324,8 @@ export default function Footer() {
           "
         >
           <p>
-            © {new Date().getFullYear()} Rekode Digital. All rights reserved.
+            © {new Date().getFullYear()} Rekode Digital.
+            All rights reserved.
           </p>
 
           <p>Hometown Values. Modern Solutions.</p>
