@@ -27,17 +27,18 @@ export async function POST (request: Request) {
 
     const body = await request.json()
 
-    const { name, business, email, phone, website, message } = body
+    const {
+    name,
+    business,
+    email,
+    phone,
+    website,
+    message,
+    utm_source,
+    utm_medium,
+    utm_campaign
+  } = body
 
-    if (!name || !business || !email) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: 'Name, business name, and email are required.'
-        },
-        { status: 400 }
-      )
-    }
 
     const { data, error } = await resend.emails.send({
       from: 'Rekode Digital <onboarding@resend.dev>',
@@ -55,6 +56,23 @@ export async function POST (request: Request) {
         <p><strong>Website:</strong> ${escapeHtml(
           website || 'Not provided'
         )}</p>
+
+
+      <h2>Marketing Attribution</h2>
+
+      <p><strong>Lead Source:</strong> ${escapeHtml(
+        utm_source && utm_source !== "direct_or_unknown"
+          ? utm_source
+          : "Direct / Unknown"
+      )}</p>
+
+      <p><strong>Medium:</strong> ${escapeHtml(
+        utm_medium || "none"
+      )}</p>
+
+      <p><strong>Campaign:</strong> ${escapeHtml(
+        utm_campaign || "none"
+      )}</p>
 
         <p><strong>Message:</strong></p>
         <p>${escapeHtml(message || 'No message provided')}</p>

@@ -41,6 +41,64 @@ const reviewPoints = [
   },
 ];
 
+
+type LeadAttribution = {
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+};
+
+const ATTRIBUTION_KEY = "rekode_lead_attribution";
+
+function getLeadAttribution(): LeadAttribution {
+  const params = new URLSearchParams(window.location.search);
+  const source = params.get("utm_source");
+
+  if (source) {
+    const attribution: LeadAttribution = {
+      utm_source: source.slice(0, 100),
+      utm_medium: (params.get("utm_medium") || "unspecified").slice(0, 100),
+      utm_campaign: (params.get("utm_campaign") || "unspecified").slice(0, 100),
+    };
+
+    try {
+      sessionStorage.setItem(
+        ATTRIBUTION_KEY,
+        JSON.stringify(attribution)
+      );
+    } catch {}
+
+    return attribution;
+  }
+
+  try {
+    const saved = sessionStorage.getItem(ATTRIBUTION_KEY);
+
+    if (saved) {
+      const data = JSON.parse(saved) as Partial<LeadAttribution>;
+
+      if (typeof data.utm_source === "string") {
+        return {
+          utm_source: data.utm_source.slice(0, 100),
+          utm_medium: typeof data.utm_medium === "string"
+            ? data.utm_medium.slice(0, 100)
+            : "unspecified",
+          utm_campaign: typeof data.utm_campaign === "string"
+            ? data.utm_campaign.slice(0, 100)
+            : "unspecified",
+        };
+      }
+    }
+  } catch {}
+
+  return {
+    utm_source: "direct_or_unknown",
+    utm_medium: "none",
+    utm_campaign: "none",
+  };
+}
+
+
 export default function VisibilityReview() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -49,6 +107,12 @@ export default function VisibilityReview() {
   >("idle");
 
   const statusRef = useRef<HTMLDivElement>(null);
+
+
+  useEffect(() => {
+    getLeadAttribution();
+  }, []);
+
 
   useEffect(() => {
     if (status !== "idle") {
@@ -72,6 +136,8 @@ export default function VisibilityReview() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const attribution = getLeadAttribution();
+
 
     const submission = {
       name: String(formData.get("name") || ""),
@@ -81,6 +147,17 @@ export default function VisibilityReview() {
       website: String(formData.get("website") || ""),
       message: String(formData.get("message") || ""),
     };
+
+    const submission = {
+      name: String(formData.get("name") || ""),
+      business: String(formData.get("business") || ""),
+      email: String(formData.get("email") || ""),
+      phone: String(formData.get("phone") || ""),
+      website: String(formData.get("website") || ""),
+      message: String(formData.get("message") || ""),
+      ...attribution,
+    };
+
 
     setIsSubmitting(true);
     setStatus("idle");
@@ -104,10 +181,14 @@ export default function VisibilityReview() {
       }
 
       // Track only successful form submissions.
-      sendGAEvent("event", "visibility_review_submit", {
-        form_name: "free_business_visibility_review",
-        lead_source: "website",
-      });
+      
+    sendGAEvent("event", "visibility_review_submit", {
+      form_name: "free_business_visibility_review",
+      lead_source: attribution.utm_source,
+      lead_medium: attribution.utm_medium,
+      lead_campaign: attribution.utm_campaign,
+    });
+
 
       form.reset();
       setStatus("success");

@@ -14,7 +14,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://rekodedigital.com"),
 
@@ -55,7 +54,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,9 +68,13 @@ export default function RootLayout({
         `}
       >
         {children}
+
         <Analytics />
       </body>
-      <GoogleAnalytics gaId="G-8JP2QEFWTY" />
+
+      {process.env.NODE_ENV === "production" && (
+        <GoogleAnalytics gaId="G-8JP2QEFWTY" />
+      )}
     </html>
   );
 }
