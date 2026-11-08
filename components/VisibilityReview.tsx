@@ -146,15 +146,6 @@ export default function VisibilityReview() {
       phone: String(formData.get("phone") || ""),
       website: String(formData.get("website") || ""),
       message: String(formData.get("message") || ""),
-    };
-
-    const submission = {
-      name: String(formData.get("name") || ""),
-      business: String(formData.get("business") || ""),
-      email: String(formData.get("email") || ""),
-      phone: String(formData.get("phone") || ""),
-      website: String(formData.get("website") || ""),
-      message: String(formData.get("message") || ""),
       ...attribution,
     };
 
@@ -722,6 +713,28 @@ export default function VisibilityReview() {
                     <ArrowRight size={18} />
                   )}
                 </button>
+
+              <p
+                  className="
+                    mt-4
+                    text-center text-xs leading-6 text-slate-400
+                  "
+                >
+                By submitting this form, you agree that Rekode Digital
+                may store and process your information to respond to
+                your Free Business Visibility Review request.
+                You will not be subscribed to marketing emails.
+                {" "}
+                <a
+                  href="/privacy-policy"
+                  className="
+                    text-[#C9784A]
+                    underline hover:text-[#E5A77C]
+                  "
+                >
+                  Privacy Policy
+                </a>
+              </p>
 
                 <p
                   className="
